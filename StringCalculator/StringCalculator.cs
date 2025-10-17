@@ -7,23 +7,23 @@ public class StringCalculator
     [Fact]
     public void Si_EnvioVacio_Debe_RetornarCero()
     {
-        var resultado = retornaNumeroCero("");
+        var resultado = ObtenerResultado("");
         resultado.Should().Be(0);
     }
 
-    [Fact]
-    public void Si_EnvioUnNumero_Debe_RetornarElMismoNumero()
+    [Theory]
+    [InlineData("1", 1)]
+    [InlineData("4", 4)]
+    [InlineData("6", 6)]
+    public void Si_EnvioUnNumero_Debe_RetornarElMismoNumero(string valorIngreso, int valorEsperado)
     {
-        var resultado = retornaNumeroCero("4");
-        resultado.Should().Be(4);
+        var resultado = ObtenerResultado(valorIngreso);
         
+        resultado.Should().Be(valorEsperado);
     }
 
-    private object retornaNumeroCero(string valor)
+    private object ObtenerResultado(string valor)
     {
-        if (string.IsNullOrEmpty(valor))
-            return 0;
-
-        return int.Parse(valor);
+        return string.IsNullOrEmpty(valor) ? 0 : int.Parse(valor);
     }
 }
