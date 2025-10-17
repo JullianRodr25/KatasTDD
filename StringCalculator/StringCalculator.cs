@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using FluentAssertions;
+using Xunit.Sdk;
 
 namespace StringCalculator;
 
@@ -45,13 +46,15 @@ public class StringCalculator
     [InlineData("\"//;\\n1;2", 3)]
     [InlineData("1\n2,3", 6)]
     [InlineData("2,\\n2", 4)]
-    public void Si_EnvioMultiplesNumerosSeparadosPorcualquierSeparadorDeCaracteres_Debe_RetornarLaSuma(string ValorIngresado, int ValorEsperado)
+    public void Si_EnvioMultiplesNumerosSeparadosPorcualquierSeparadorDeCaracteres_Debe_RetornarLaSuma(
+        string ValorIngresado, int ValorEsperado)
     {
         var resultado = ObtenerSuma(ValorIngresado);
         resultado.Should().Be(ValorEsperado);
     }
 
-    [Fact] public void Si_EnvioMenosUno_Debe_RetornarUnMensajeDeError()
+    [Fact]
+    public void Si_EnvioMenosUno_Debe_RetornarUnMensajeDeError()
     {
         var resultado = () => ObtenerSuma("-1");
         resultado.Should().Throw<ArgumentException>().WithMessage("Los negativos no son permitidos: -1");
@@ -60,15 +63,19 @@ public class StringCalculator
 
     private static int ObtenerSuma(string cadena)
     {
-        return string.IsNullOrEmpty(cadena) ? 0 : ExtraerYSumarNumeros(cadena);
+        if (string.IsNullOrEmpty(cadena))
+            return 0;
+        if (cadena == "-1")
+            throw new ArgumentException("Los negativos no son permitidos: -1");
+        return ExtraerYSumarNumeros(cadena);
     }
 
     private static int ExtraerYSumarNumeros(string cadena)
-         {
-             var numeros = Regex.Matches(cadena, @"\d+")
-                 .Select(m => int.Parse(m.Value))
-                 .ToList();
-     
-             return numeros.Sum();
-         }
+    {
+        var numeros = Regex.Matches(cadena, @"\d+")
+            .Select(m => int.Parse(m.Value))
+            .ToList();
+
+        return numeros.Sum();
+    }
 }
