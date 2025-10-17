@@ -26,10 +26,18 @@ public class StringCalculator
     [InlineData("1,2", 3)]
     [InlineData("2,2", 4)]
     [InlineData("1,2,3", 6)]
+    [InlineData("1,2,3,4,5,6,7,8,9", 45)]
     public void Si_EnvioMultiplesNumerosSeparadosPorComa_Debe_RetornarLaSuma(string ValorIngreso, int ValorEsperado)
     {
         var resultado = CalcularSuma(ValorIngreso);
         resultado.Should().Be(ValorEsperado);
+    }
+
+    [Fact]
+    public void Si_EnvioMultiplesNumerosSeparadosEspacios_Debe_RetornarLaSuma()
+    {
+        var resultado = CalcularSuma("1 2");
+        resultado.Should().Be(3);
     }
 
     private static int CalcularSuma(string valor)
