@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Text.RegularExpressions;
+using FluentAssertions;
 
 namespace StringCalculator;
 
@@ -7,7 +8,7 @@ public class StringCalculator
     [Fact]
     public void Si_EnvioVacio_Debe_RetornarCero()
     {
-        var resultado = CalcularSuma("");
+        var resultado = ObtenerSuma("");
         resultado.Should().Be(0);
     }
 
@@ -15,9 +16,9 @@ public class StringCalculator
     [InlineData("1", 1)]
     [InlineData("4", 4)]
     [InlineData("6", 6)]
-    public void Si_EnvioUnNumero_Debe_RetornarElMismoNumero(string valorIngreso, int valorEsperado)
+    public void Si_EnvioUnNumero_Debe_RetornarElMismoNumero(string valorIngresado, int valorEsperado)
     {
-        var resultado = CalcularSuma(valorIngreso);
+        var resultado = ObtenerSuma(valorIngresado);
 
         resultado.Should().Be(valorEsperado);
     }
@@ -29,42 +30,39 @@ public class StringCalculator
     [InlineData("1,2,3,4,5,6,7,8,9", 45)]
     public void Si_EnvioMultiplesNumerosSeparadosPorComa_Debe_RetornarLaSuma(string ValorIngreso, int ValorEsperado)
     {
-        var resultado = CalcularSuma(ValorIngreso);
+        var resultado = ObtenerSuma(ValorIngreso);
         resultado.Should().Be(ValorEsperado);
     }
 
     [Fact]
     public void Si_EnvioMultiplesNumerosSeparadosEspacios_Debe_RetornarLaSuma()
     {
-        var resultado = CalcularSuma("1 2");
+        var resultado = ObtenerSuma("1 2");
         resultado.Should().Be(3);
     }
-    
-    [Fact]
-    public void Si_EnvioMultiplesNumerosSeparadosPorcualquierSeparadorDeCaracteres_Debe_RetornarLaSuma()
+
+    [Theory]
+    [InlineData("\"//;\\n1;2", 3)]
+    [InlineData("1\n2,3", 6)]
+    [InlineData("2,\\n2", 4)]
+    public void Si_EnvioMultiplesNumerosSeparadosPorcualquierSeparadorDeCaracteres_Debe_RetornarLaSuma(string ValorIngresado, int ValorEsperado)
     {
-        var resultado = CalcularSuma("//;\n2;2");
-        resultado.Should().Be(4);
+        var resultado = ObtenerSuma(ValorIngresado);
+        resultado.Should().Be(ValorEsperado);
     }
-    
 
-    private static int CalcularSuma(string valor)
+
+    private static int ObtenerSuma(string cadena)
     {
-        if (string.IsNullOrEmpty(valor))
-            return 0;
-
-        char[] separadores = [',', ' '];
-
-        if (valor.StartsWith("//"))
-        {
-            var delimitador = valor[2];
-            valor = valor.Substring(4);
-            separadores = [delimitador];
-        }
-
-        return valor
-            .Split(separadores, StringSplitOptions.RemoveEmptyEntries)
-            .Select(int.Parse)
-            .Sum();
+        return string.IsNullOrEmpty(cadena) ? 0 : ExtraerYSumarNumeros(cadena);
     }
+
+    private static int ExtraerYSumarNumeros(string cadena)
+         {
+             var numeros = Regex.Matches(cadena, @"\d+")
+                 .Select(m => int.Parse(m.Value))
+                 .ToList();
+     
+             return numeros.Sum();
+         }
 }
