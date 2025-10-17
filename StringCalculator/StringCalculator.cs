@@ -21,6 +21,9 @@ public class StringCalculator
 
     private object retornaNumeroCero(string valor)
     {
-        return valor == "" ? 0 : valor;
+        if (string.IsNullOrEmpty(valor))
+            return 0;
+
+        return int.Parse(valor);
     }
 }
