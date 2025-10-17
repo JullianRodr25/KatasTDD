@@ -59,12 +59,12 @@ public class StringCalculator
         var resultado = () => ObtenerSuma("-1");
         resultado.Should().Throw<ArgumentException>().WithMessage("Los negativos no son permitidos: -1");
     }
-    
+
     [Fact]
     public void Si_EnvioEnLacadenaNumerosNegativos_Debe_RetornarUnMensajeDeError()
     {
         var resultado = () => ObtenerSuma("1,-2,-3");
-        resultado.Should().Throw<ArgumentException>().WithMessage("Los negativos no son permitidos: -1");
+        resultado.Should().Throw<ArgumentException>().WithMessage("Los negativos no son permitidos: -2,-3");
     }
 
 
@@ -72,17 +72,30 @@ public class StringCalculator
     {
         if (string.IsNullOrEmpty(cadena))
             return 0;
-        if (cadena == "-1")
-            throw new ArgumentException("Los negativos no son permitidos: -1");
-        return ExtraerYSumarNumeros(cadena);
-    }
 
-    private static int ExtraerYSumarNumeros(string cadena)
-    {
-        var numeros = Regex.Matches(cadena, @"\d+")
-            .Select(m => int.Parse(m.Value))
-            .ToList();
+        var numeros = ExtraerNumeros(cadena);
+        var negativos = new List<int>();
+
+        foreach (var n in numeros)
+        {
+            if (n < 0)
+                negativos.Add(n);
+        }
+
+        if (negativos.Count > 0)
+            throw new ArgumentException("Los negativos no son permitidos: " + string.Join(",", negativos));
 
         return numeros.Sum();
+    }
+
+    private static List<int> ExtraerNumeros(string cadena)
+    {
+        var matches = Regex.Matches(cadena, @"-?\d+");
+        var numeros = new List<int>();
+        foreach (Match match in matches)
+        {
+            numeros.Add(int.Parse(match.Value));
+        }
+        return numeros;
     }
 }
