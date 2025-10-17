@@ -18,10 +18,10 @@ public class StringCalculator
     public void Si_EnvioUnNumero_Debe_RetornarElMismoNumero(string valorIngreso, int valorEsperado)
     {
         var resultado = CalcularSuma(valorIngreso);
-        
+
         resultado.Should().Be(valorEsperado);
     }
-    
+
     [Theory]
     [InlineData("1,2", 3)]
     [InlineData("2,2", 4)]
@@ -44,6 +44,9 @@ public class StringCalculator
     {
         if (string.IsNullOrEmpty(valor))
             return 0;
-        return valor.Length > 1 ? valor.Split(",").Select(int.Parse).Sum() : int.Parse(valor);
+        return valor
+            .Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(int.Parse)
+            .Sum();
     }
 }
