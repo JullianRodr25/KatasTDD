@@ -41,8 +41,8 @@ public class StringCalculator
     {
         if (string.IsNullOrEmpty(valor))
             return 0;
-        if (valor == "1,2")
-            return 3;
+        if (valor.Length > 1)
+            return valor.Split(",").Select(int.Parse).Sum();
         return int.Parse(valor);
     }
 }
