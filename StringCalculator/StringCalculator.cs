@@ -22,6 +22,14 @@ public class StringCalculator
         resultado.Should().Be(valorEsperado);
     }
 
+    [Fact]
+    public void Si_Envio1y2_Debe_RetornarTres()
+    {
+        var resultado = ObtenerResultado("1,2");
+        
+        resultado.Should().Be(3);
+    }
+
     private object ObtenerResultado(string valor)
     {
         return string.IsNullOrEmpty(valor) ? 0 : int.Parse(valor);
