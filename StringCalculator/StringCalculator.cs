@@ -41,7 +41,7 @@ public class StringCalculator
     }
     
     [Fact]
-    public void Si_EnvioMultiplesNumerosSeparadosPorcualquierSeparador_Debe_RetornarLaSuma()
+    public void Si_EnvioMultiplesNumerosSeparadosPorcualquierSeparadorDeCaracteres_Debe_RetornarLaSuma()
     {
         var resultado = CalcularSuma("//;\n2;2");
         resultado.Should().Be(4);
@@ -52,8 +52,18 @@ public class StringCalculator
     {
         if (string.IsNullOrEmpty(valor))
             return 0;
+
+        char[] separadores = [',', ' '];
+
+        if (valor.StartsWith("//"))
+        {
+            var delimitador = valor[2];
+            valor = valor.Substring(4);
+            separadores = [delimitador];
+        }
+
         return valor
-            .Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries)
+            .Split(separadores, StringSplitOptions.RemoveEmptyEntries)
             .Select(int.Parse)
             .Sum();
     }
