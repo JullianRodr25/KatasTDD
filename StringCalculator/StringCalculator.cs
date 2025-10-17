@@ -47,24 +47,20 @@ public class StringCalculator
     [InlineData("1\n2,3", 6)]
     [InlineData("2,\\n2", 4)]
     public void Si_EnvioMultiplesNumerosSeparadosPorcualquierSeparadorDeCaracteres_Debe_RetornarLaSuma(
-        string ValorIngresado, int ValorEsperado)
+        string valorIngresado, int valorEsperado)
     {
-        var resultado = ObtenerSuma(ValorIngresado);
-        resultado.Should().Be(ValorEsperado);
+        var resultado = ObtenerSuma(valorIngresado);
+        resultado.Should().Be(valorEsperado);
     }
-
-    [Fact]
-    public void Si_EnvioMenosUno_Debe_RetornarUnMensajeDeError()
+    
+    [Theory]
+    [InlineData("1,-2,-3", "Los negativos no son permitidos: -2,-3")]
+    [InlineData("-1", "Los negativos no son permitidos: -1")]
+    [InlineData("//:1,/n-2,-8", "Los negativos no son permitidos: -2,-8")]
+    public void Si_EnvioEnLacadenaNumerosNegativos_Debe_RetornarUnMensajeDeError(string valorIngresado, string mensajeEsperado)
     {
-        var resultado = () => ObtenerSuma("-1");
-        resultado.Should().Throw<ArgumentException>().WithMessage("Los negativos no son permitidos: -1");
-    }
-
-    [Fact]
-    public void Si_EnvioEnLacadenaNumerosNegativos_Debe_RetornarUnMensajeDeError()
-    {
-        var resultado = () => ObtenerSuma("1,-2,-3");
-        resultado.Should().Throw<ArgumentException>().WithMessage("Los negativos no son permitidos: -2,-3");
+        var resultado = () => ObtenerSuma(valorIngresado);
+        resultado.Should().Throw<ArgumentException>().WithMessage(mensajeEsperado);
     }
 
 
@@ -72,19 +68,10 @@ public class StringCalculator
     {
         if (string.IsNullOrEmpty(cadena))
             return 0;
-
+        
         var numeros = ExtraerNumeros(cadena);
-        var negativos = new List<int>();
-
-        foreach (var n in numeros)
-        {
-            if (n < 0)
-                negativos.Add(n);
-        }
-
-        if (negativos.Count > 0)
-            throw new ArgumentException("Los negativos no son permitidos: " + string.Join(",", negativos));
-
+        NumerosNegativos(numeros);
+        
         return numeros.Sum();
     }
 
@@ -96,6 +83,22 @@ public class StringCalculator
         {
             numeros.Add(int.Parse(match.Value));
         }
+
         return numeros;
     }
+    private static void NumerosNegativos(List<int> numeros)
+    {
+        var negativos = new List<int>();
+
+        foreach (var n in numeros)
+        {
+            if (n < 0)
+                negativos.Add(n);
+        }
+
+        if (negativos.Count > 0)
+            throw new ArgumentException("Los negativos no son permitidos: " + string.Join(",", negativos));
+    }
+
+
 }
