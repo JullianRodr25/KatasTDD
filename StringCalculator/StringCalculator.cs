@@ -11,8 +11,8 @@ public class StringCalculator
         resultado.Should().Be(0);
     }
 
-    private object retornaNumeroCero(string empty)
+    private object retornaNumeroCero(string valor)
     {
-        return 0;
+        return valor == "" ? 0 : valor;
     }
 }
