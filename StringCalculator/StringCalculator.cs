@@ -51,6 +51,12 @@ public class StringCalculator
         resultado.Should().Be(ValorEsperado);
     }
 
+    [Fact] public void Si_EnvioMenosUno_Debe_RetornarUnMensajeDeError()
+    {
+        var resultado = () => ObtenerSuma("-1");
+        resultado.Should().Throw<ArgumentException>().WithMessage("Los negativos no son permitidos: -1");
+    }
+
 
     private static int ObtenerSuma(string cadena)
     {
