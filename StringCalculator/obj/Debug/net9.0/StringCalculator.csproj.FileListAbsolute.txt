@@ -97,3 +97,4 @@ C:\Users\julian.vargas\Desktop\BootcampTDD\katasTDD\StringCalculator\obj\Debug\n
 C:\Users\julian.vargas\Desktop\BootcampTDD\katasTDD\StringCalculator\obj\Debug\net9.0\StringCalculator.pdb
 C:\Users\julian.vargas\Desktop\BootcampTDD\katasTDD\StringCalculator\obj\Debug\net9.0\StringCalculator.genruntimeconfig.cache
 C:\Users\julian.vargas\Desktop\BootcampTDD\katasTDD\StringCalculator\obj\Debug\net9.0\ref\StringCalculator.dll
+C:\Users\julian.vargas\Desktop\BootcampTDD\katasTDD\StringCalculator\bin\Debug\net9.0\FluentAssertions.dll
