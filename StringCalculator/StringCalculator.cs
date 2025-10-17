@@ -13,6 +13,6 @@ public class StringCalculator
 
     private object retornaNumeroCero(string empty)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 }
