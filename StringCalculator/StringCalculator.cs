@@ -7,7 +7,7 @@ public class StringCalculator
     [Fact]
     public void Si_EnvioVacio_Debe_RetornarCero()
     {
-        var resultado = ObtenerResultado("");
+        var resultado = CalcularSuma("");
         resultado.Should().Be(0);
     }
 
@@ -17,32 +17,25 @@ public class StringCalculator
     [InlineData("6", 6)]
     public void Si_EnvioUnNumero_Debe_RetornarElMismoNumero(string valorIngreso, int valorEsperado)
     {
-        var resultado = ObtenerResultado(valorIngreso);
+        var resultado = CalcularSuma(valorIngreso);
         
         resultado.Should().Be(valorEsperado);
     }
-
-    [Fact]
-    public void Si_Envio1y2_Debe_RetornarTres()
+    
+    [Theory]
+    [InlineData("1,2", 3)]
+    [InlineData("2,2", 4)]
+    [InlineData("1,2,3", 6)]
+    public void Si_EnvioMultiplesNumerosSeparadosPorComa_Debe_RetornarLaSuma(string ValorIngreso, int ValorEsperado)
     {
-        var resultado = ObtenerResultado("1,2");
-        
-        resultado.Should().Be(3);
+        var resultado = CalcularSuma(ValorIngreso);
+        resultado.Should().Be(ValorEsperado);
     }
 
-    [Fact]
-    public void Si_EnvioMultiplesNumerosSeparadosPorComa_Debe_RetornarLaSuma()
-    {
-        var resultado = ObtenerResultado("2,2");
-        resultado.Should().Be(4);
-    }
-
-    private object ObtenerResultado(string valor)
+    private static int CalcularSuma(string valor)
     {
         if (string.IsNullOrEmpty(valor))
             return 0;
-        if (valor.Length > 1)
-            return valor.Split(",").Select(int.Parse).Sum();
-        return int.Parse(valor);
+        return valor.Length > 1 ? valor.Split(",").Select(int.Parse).Sum() : int.Parse(valor);
     }
 }
