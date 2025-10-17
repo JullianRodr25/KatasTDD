@@ -39,6 +39,14 @@ public class StringCalculator
         var resultado = CalcularSuma("1 2");
         resultado.Should().Be(3);
     }
+    
+    [Fact]
+    public void Si_EnvioMultiplesNumerosSeparadosPorcualquierSeparador_Debe_RetornarLaSuma()
+    {
+        var resultado = CalcularSuma("//;\n2;2");
+        resultado.Should().Be(4);
+    }
+    
 
     private static int CalcularSuma(string valor)
     {
