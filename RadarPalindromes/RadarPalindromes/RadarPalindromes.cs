@@ -13,6 +13,6 @@ public class RadarPalindromes
 
     private object RetornarVerdadero(string palabra)
     {
-        return false;
+        return true;
     }
 }
