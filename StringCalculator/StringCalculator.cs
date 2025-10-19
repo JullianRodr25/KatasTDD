@@ -52,35 +52,40 @@ public class StringCalculator
         var resultado = ObtenerSuma(valorIngresado);
         resultado.Should().Be(valorEsperado);
     }
-    
+
     [Theory]
     [InlineData("1,-2,-3", "Los negativos no son permitidos: -2,-3")]
     [InlineData("-1", "Los negativos no son permitidos: -1")]
     [InlineData("//:1,/n-2,-8", "Los negativos no son permitidos: -2,-8")]
-    public void Si_EnvioEnLacadenaNumerosNegativos_Debe_RetornarUnMensajeDeError(string valorIngresado, string mensajeEsperado)
+    public void Si_EnvioEnLacadenaNumerosNegativos_Debe_RetornarUnMensajeDeError(string valorIngresado,
+        string mensajeEsperado)
     {
         var resultado = () => ObtenerSuma(valorIngresado);
         resultado.Should().Throw<ArgumentException>().WithMessage(mensajeEsperado);
     }
-    
-    [Fact]
-    public void Si_EnvioEnLaCadenaUnValorMayoraMil_Debe_IgnorarloyContinuarConLaSumaDeunoydos()
+
+    [Theory]
+    [InlineData("1,2,1002", 3)]
+    [InlineData("&/(&/2,2,)1700),", 4)]
+    [InlineData("1,2,3,4,5,6,7,8,9,1200", 45)]
+    public void Si_EnvioEnLaCadenaUnValorMayoraMil_Debe_IgnorarloyContinuarConLaSuma(string valorIngresado,
+        int valorEsperado)
     {
-        var resultado = ObtenerSuma("1,2,1002");
-        resultado.Should().Be(3);
+        var resultado = ObtenerSuma(valorIngresado);
+        resultado.Should().Be(valorEsperado);
     }
-    
+
     private static int ObtenerSuma(string cadena)
     {
         if (string.IsNullOrEmpty(cadena))
             return 0;
-        
+
         var numeros = ExtraerNumeros(cadena);
         NumerosNegativos(numeros);
-        var numerosMenoresAMil = numeros.Where(n => n <= 1000);
-        
-        return numerosMenoresAMil.Sum();
+
+        return numeros.Where(n => n <= 1000).Sum();
     }
+
     private static List<int> ExtraerNumeros(string cadena)
     {
         var matches = Regex.Matches(cadena, @"-?\d+");
@@ -92,6 +97,7 @@ public class StringCalculator
 
         return numeros;
     }
+
     private static void NumerosNegativos(List<int> numeros)
     {
         var negativos = new List<int>();
@@ -105,6 +111,4 @@ public class StringCalculator
         if (negativos.Count > 0)
             throw new ArgumentException("Los negativos no son permitidos: " + string.Join(",", negativos));
     }
-
-
 }
