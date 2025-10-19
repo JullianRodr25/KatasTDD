@@ -16,6 +16,13 @@ public class RadarPalindromes
         resultado.Should().Be(valorEsperado);
     }
 
+    [Fact]
+    public void Si_EnvioUnaPalabraPuntosYEspacios_Debe_IgnorarlasYRetornarVerdadero()
+    {
+        var resultado = RetornarVerdadero("Anna. ");
+        resultado.Should().Be(true);
+    }
+
     private static object RetornarVerdadero(string palabra)
     {
         var palabraFinal = palabra.ToLower();

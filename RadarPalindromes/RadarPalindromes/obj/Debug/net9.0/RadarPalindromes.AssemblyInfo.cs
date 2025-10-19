@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RadarPalindromes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cddf50a2ee47d5b8b0c68c1d7c0518de8a4325a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a50d00440a96e021ad532377c6fa9544baae0500")]
 [assembly: System.Reflection.AssemblyProductAttribute("RadarPalindromes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RadarPalindromes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
