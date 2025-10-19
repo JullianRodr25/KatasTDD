@@ -11,6 +11,13 @@ public class RadarPalindromes
        resultado.Should().Be(true);
     }
 
+    [Fact]
+    public void Si_EnvioUnaPalabraConMayusculasOMinusculas_Debe_IgnorarlasYRetornarVerdadero()
+    {
+        var resultado = RetornarVerdadero("Anna");
+        resultado.Should().Be(true);
+    }
+
     private static object RetornarVerdadero(string palabra)
     {
         return palabra == "anna";
