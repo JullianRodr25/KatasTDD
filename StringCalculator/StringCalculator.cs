@@ -62,8 +62,14 @@ public class StringCalculator
         var resultado = () => ObtenerSuma(valorIngresado);
         resultado.Should().Throw<ArgumentException>().WithMessage(mensajeEsperado);
     }
-
-
+    
+    [Fact]
+    public void Si_EnvioEnLaCadenaUnValorMayoraMil_Debe_IgnorarloyContinuarConLaSumaDeunoy2()
+    {
+        var resultado = ObtenerSuma("1,2,1002");
+        resultado.Should().Be(3);
+    }
+    
     private static int ObtenerSuma(string cadena)
     {
         if (string.IsNullOrEmpty(cadena))
@@ -74,7 +80,6 @@ public class StringCalculator
         
         return numeros.Sum();
     }
-
     private static List<int> ExtraerNumeros(string cadena)
     {
         var matches = Regex.Matches(cadena, @"-?\d+");
