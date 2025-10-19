@@ -64,7 +64,7 @@ public class StringCalculator
     }
     
     [Fact]
-    public void Si_EnvioEnLaCadenaUnValorMayoraMil_Debe_IgnorarloyContinuarConLaSumaDeunoy2()
+    public void Si_EnvioEnLaCadenaUnValorMayoraMil_Debe_IgnorarloyContinuarConLaSumaDeunoydos()
     {
         var resultado = ObtenerSuma("1,2,1002");
         resultado.Should().Be(3);
@@ -77,8 +77,9 @@ public class StringCalculator
         
         var numeros = ExtraerNumeros(cadena);
         NumerosNegativos(numeros);
+        var numerosMenoresAMil = numeros.Where(n => n <= 1000);
         
-        return numeros.Sum();
+        return numerosMenoresAMil.Sum();
     }
     private static List<int> ExtraerNumeros(string cadena)
     {
