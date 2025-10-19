@@ -68,13 +68,16 @@ public class StringCalculator
     [InlineData("1,2,1002", 3)]
     [InlineData("&/(&/2,2,)1700),", 4)]
     [InlineData("1,2,3,4,5,6,7,8,9,1200", 45)]
+    [InlineData("//[***]\\n1***2***3\"", 6)]
+    [InlineData("//[*][%]\\n1*2%3", 6)]
+    [InlineData("//[foo][bar]\\n1foo2bar3\"", 6)]
     public void Si_EnvioEnLaCadenaUnValorMayoraMil_Debe_IgnorarloyContinuarConLaSuma(string valorIngresado,
         int valorEsperado)
     {
         var resultado = ObtenerSuma(valorIngresado);
         resultado.Should().Be(valorEsperado);
     }
-
+    
     private static int ObtenerSuma(string cadena)
     {
         if (string.IsNullOrEmpty(cadena))
