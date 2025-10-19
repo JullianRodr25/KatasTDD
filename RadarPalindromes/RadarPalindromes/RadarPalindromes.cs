@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Text.RegularExpressions;
+using FluentAssertions;
 
 namespace RadarPalindromes;
 
@@ -25,13 +26,22 @@ public class RadarPalindromes
     [Fact]
     public void Si_EnvioUnaPalabraQueNoSeaAlfanumérica_Debe_RetornarUnError()
     {
-        var resultado = RetornarVerdadero("%&/&()");
+        var resultado = () => RetornarVerdadero("%&/&()");
+        resultado.Should().Throw<ArgumentException>().WithMessage("La palabra contiene caracteres no alfanuméricos.");
+    }
+    
+    [Fact]
+    public void Si_EnvioUnaPalabraQueNoSeaPalindroma_Debe_RetornarFalse()
+    {
+        var resultado = RetornarVerdadero("Prueba");
         resultado.Should().Be(true);
     }
-
+    
     private static object RetornarVerdadero(string palabra)
     {
         var palabraFinal = palabra.ToLower().Replace(".","").Replace(" ", "");
+        if (!Regex.IsMatch(palabraFinal, @"^[a-z0-9]+$"))
+            throw new ArgumentException("La palabra contiene caracteres no alfanuméricos.");
         return palabraFinal == "anna";
     }
 }
