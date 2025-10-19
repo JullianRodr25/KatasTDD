@@ -13,35 +13,41 @@ public class RadarPalindromes
     
     public void Si_EnvioUnaPalabraConMayusculasOMinusculas_Debe_IgnorarlasYRetornarVerdadero(string palabra, bool valorEsperado)
     {
-        var resultado = RetornarVerdadero(palabra);
+        var resultado = EsPalindromo(palabra);
         resultado.Should().Be(valorEsperado);
     }
 
     [Fact]
     public void Si_EnvioUnaPalabraPuntosYEspacios_Debe_IgnorarlasYRetornarVerdadero()
     {
-        var resultado = RetornarVerdadero("An..na. ");
+        var resultado = EsPalindromo("An..na. ");
         resultado.Should().Be(true);
     }
     [Fact]
     public void Si_EnvioUnaPalabraQueNoSeaAlfanumérica_Debe_RetornarUnError()
     {
-        var resultado = () => RetornarVerdadero("%&/&()");
+        var resultado = () => EsPalindromo("%&/&()");
         resultado.Should().Throw<ArgumentException>().WithMessage("La palabra contiene caracteres no alfanuméricos.");
     }
     
-    [Fact]
-    public void Si_EnvioUnaPalabraQueNoSeaPalindroma_Debe_RetornarFalse()
+    [Theory]
+    [InlineData("Prueba", false)]
+    [InlineData("Hola", false)]
+    [InlineData("123", false)]
+
+    public void Si_EnvioUnaPalabraQueNoSeaPalindroma_Debe_RetornarFalse(string valorIngreso, bool valorEsperado)
     {
-        var resultado = RetornarVerdadero("Prueba");
-        resultado.Should().Be(false);
+        var resultado = EsPalindromo(valorIngreso);
+        resultado.Should().Be(valorEsperado);
     }
     
-    private static object RetornarVerdadero(string palabra)
+    private static object EsPalindromo(string palabra)
     {
         var palabraFinal = palabra.ToLower().Replace(".","").Replace(" ", "");
+        
         if (!Regex.IsMatch(palabraFinal, @"^[a-z0-9]+$"))
             throw new ArgumentException("La palabra contiene caracteres no alfanuméricos.");
+        
         var palabraInvertida = new string(palabraFinal.Reverse().ToArray());
         
         return palabraFinal == palabraInvertida;
