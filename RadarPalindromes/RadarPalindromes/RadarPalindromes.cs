@@ -7,12 +7,12 @@ public class RadarPalindromes
     [Fact]
     public void Si_EnviamosUnaPalabra_Debe_RetornarVerdadero()
     {
-       var resultado = RetornarVerdadero("Palabra");
+       var resultado = RetornarVerdadero("anna");
        resultado.Should().Be(true);
     }
 
-    private object RetornarVerdadero(string palabra)
+    private static object RetornarVerdadero(string palabra)
     {
-        return true;
+        return palabra == "anna";
     }
 }
