@@ -4,18 +4,16 @@ namespace RadarPalindromes;
 
 public class RadarPalindromes
 {
-    [Fact]
-    public void Si_EnviamosUnaPalabra_Debe_RetornarVerdadero()
+    [Theory]
+    [InlineData("Anna", true)]
+    [InlineData("ANNA", true)]
+    [InlineData("AnNa", true)]
+    [InlineData("anna", true)]
+    
+    public void Si_EnvioUnaPalabraConMayusculasOMinusculas_Debe_IgnorarlasYRetornarVerdadero(string palabra, bool valorEsperado)
     {
-       var resultado = RetornarVerdadero("anna");
-       resultado.Should().Be(true);
-    }
-
-    [Fact]
-    public void Si_EnvioUnaPalabraConMayusculasOMinusculas_Debe_IgnorarlasYRetornarVerdadero()
-    {
-        var resultado = RetornarVerdadero("AnNa");
-        resultado.Should().Be(true);
+        var resultado = RetornarVerdadero(palabra);
+        resultado.Should().Be(valorEsperado);
     }
 
     private static object RetornarVerdadero(string palabra)
