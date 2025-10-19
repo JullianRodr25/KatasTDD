@@ -25,7 +25,7 @@ public class RadarPalindromes
 
     private static object RetornarVerdadero(string palabra)
     {
-        var palabraFinal = palabra.ToLower();
+        var palabraFinal = palabra.ToLower().Replace(".","").Replace(" ", "");
         return palabraFinal == "anna";
     }
 }
