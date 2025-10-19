@@ -19,7 +19,13 @@ public class RadarPalindromes
     [Fact]
     public void Si_EnvioUnaPalabraPuntosYEspacios_Debe_IgnorarlasYRetornarVerdadero()
     {
-        var resultado = RetornarVerdadero("Anna. ");
+        var resultado = RetornarVerdadero("An..na. ");
+        resultado.Should().Be(true);
+    }
+    [Fact]
+    public void Si_EnvioUnaPalabraQueNoSeaAlfanumérica_Debe_RetornarUnError()
+    {
+        var resultado = RetornarVerdadero("%&/&()");
         resultado.Should().Be(true);
     }
 
