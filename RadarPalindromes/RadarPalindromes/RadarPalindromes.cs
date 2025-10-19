@@ -34,7 +34,7 @@ public class RadarPalindromes
     public void Si_EnvioUnaPalabraQueNoSeaPalindroma_Debe_RetornarFalse()
     {
         var resultado = RetornarVerdadero("Prueba");
-        resultado.Should().Be(true);
+        resultado.Should().Be(false);
     }
     
     private static object RetornarVerdadero(string palabra)
@@ -42,6 +42,8 @@ public class RadarPalindromes
         var palabraFinal = palabra.ToLower().Replace(".","").Replace(" ", "");
         if (!Regex.IsMatch(palabraFinal, @"^[a-z0-9]+$"))
             throw new ArgumentException("La palabra contiene caracteres no alfanuméricos.");
-        return palabraFinal == "anna";
+        var palabraInvertida = new string(palabraFinal.Reverse().ToArray());
+        
+        return palabraFinal == palabraInvertida;
     }
 }
