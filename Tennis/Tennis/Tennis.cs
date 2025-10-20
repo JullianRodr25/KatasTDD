@@ -36,23 +36,19 @@ public class Tennis
     private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
     {
         string[] nombres = { "Love", "Fifteen", "Thirty", "Forty" };
+        
         if (puntosJugador1 == puntosJugador2)
-        {
             return puntosJugador1 >= 3 ? "Deuce" : $"{nombres[puntosJugador1]}-All";
-        }
-
+        
         if (puntosJugador1 >= 3 && puntosJugador2 >= 3)
         {
-            if (Math.Abs(puntosJugador1 - puntosJugador2) == 1)
-            {
-                return puntosJugador1 > puntosJugador2 ? "Advantage jugador 1" : "Advantage jugador 2";
-            }
+            int diferencia = puntosJugador1 - puntosJugador2;
+            if (Math.Abs(diferencia) == 1)
+                return diferencia > 0 ? "Advantage jugador 1" : "Advantage jugador 2";
         }
-
+        
         if (puntosJugador1 < 4 && puntosJugador2 < 4)
-        {
             return $"{nombres[puntosJugador1]}-{nombres[puntosJugador2]}";
-        }
 
         return string.Empty;
     }
