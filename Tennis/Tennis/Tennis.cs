@@ -25,7 +25,7 @@ public class Tennis
     {
         var resultado = CalcularPuntajeTennis(2, 0);
         
-        resultado.Should().Be("thirty");
+        resultado.Should().Be("Thirty");
     }
 
     private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
@@ -36,6 +36,9 @@ public class Tennis
         if (puntosJugador1 == 1 && puntosJugador2 == 0)
             return "Fifteen";
         
-        return "thirty";
+        if (puntosJugador1 == 2 && puntosJugador2 == 0)
+            return "Thirty";
+        
+        return string.Empty;
     }
 }
