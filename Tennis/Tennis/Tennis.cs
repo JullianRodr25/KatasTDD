@@ -20,6 +20,14 @@ public class Tennis
         resultado.Should().Be("Fifteen");
     }
 
+    [Fact]
+    public void Si_Jugador1TieneDosPuntosYJugador2Cero_Debe_Regresarthirty()
+    {
+        var resultado = CalcularPuntajeTennis(2, 0);
+        
+        resultado.Should().Be("thirty");
+    }
+
     private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
     {
         if (puntosJugador1 == 0 && puntosJugador2 == 0)
