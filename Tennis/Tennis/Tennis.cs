@@ -21,13 +21,21 @@ public class Tennis
     }
 
     [Fact]
-    public void Si_Jugador1TieneDosPuntosYJugador2Cero_Debe_Regresarthirty()
+    public void Si_Jugador1TieneDosPuntosYJugador2Cero_Debe_RegresarThirty()
     {
         var resultado = CalcularPuntajeTennis(2, 0);
         
         resultado.Should().Be("Thirty");
     }
-
+    [Fact]
+    public void Si_Jugador1TieneTresPuntosYJugador2Cero_Debe_RegresarForty()
+    {
+        var resultado = CalcularPuntajeTennis(3, 0);
+        
+        resultado.Should().Be("Forty");
+    }
+    
+    
     private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
     {
         if (puntosJugador1 == 0 && puntosJugador2 == 0)
