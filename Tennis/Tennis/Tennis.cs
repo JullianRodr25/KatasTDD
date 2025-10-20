@@ -59,6 +59,9 @@ public class Tennis
         
         if (puntosJugador1 == 3 && puntosJugador2 == 0)
             return "Forty";
+        
+        if (puntosJugador1 == 3 && puntosJugador2 == 3)
+            return "Forty-All";
 
         return string.Empty;
     }
