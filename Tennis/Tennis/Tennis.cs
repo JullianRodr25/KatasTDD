@@ -35,10 +35,19 @@ public class Tennis
 
         resultado.Should().Be("Forty");
     }
+    
+    
+    [Fact]
+    public void Si_Jugador1TieneTresPuntosYJugador2Tres_Debe_RegresarFortyAll()
+    {
+        var resultado = CalcularPuntajeTennis(3, 3);
 
-
+        resultado.Should().Be("Forty-All");
+    }
+    
     private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
     {
+        
         if (puntosJugador1 == 0 && puntosJugador2 == 0)
             return "Love";
         
