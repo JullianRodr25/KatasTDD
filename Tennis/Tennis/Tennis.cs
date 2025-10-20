@@ -11,10 +11,17 @@ public class Tennis
 
         resultado.Should().Be("Love");
     }
-
-    private static string CalcularPuntajeTennis(int player1, int player2)
+    
+    [Fact]
+    public void Si_Jugador1TieneUnPuntoYJugador2Cero_RegresaFifteen()
     {
-        if (player1 == 0 && player2 == 0)
+        var resultado = CalcularPuntajeTennis(1, 0);
+        
+        resultado.Should().Be("Fifteen");
+    }
+
+    private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
+    {
         return "Love";
     }
 }
