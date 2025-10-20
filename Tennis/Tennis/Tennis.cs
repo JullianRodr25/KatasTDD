@@ -46,7 +46,7 @@ public class Tennis
         
         if (puntosJugador1 == 2 && puntosJugador2 == 0)
             return "Thirty";
-        
-        return string.Empty;
+
+        return "Forty";
     }
 }
