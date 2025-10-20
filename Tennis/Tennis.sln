@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tennis", "Tennis\Tennis.csproj", "{ABDABC0D-33C8-42C8-9F71-BECD22BEAC4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABDABC0D-33C8-42C8-9F71-BECD22BEAC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABDABC0D-33C8-42C8-9F71-BECD22BEAC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABDABC0D-33C8-42C8-9F71-BECD22BEAC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABDABC0D-33C8-42C8-9F71-BECD22BEAC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
