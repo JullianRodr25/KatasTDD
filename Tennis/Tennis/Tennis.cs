@@ -30,10 +30,9 @@ public class Tennis
         string[] nombres = { "Love", "Fifteen", "Thirty", "Forty" };
         if (puntosJugador1 == puntosJugador2)
         {
-            return $"{nombres[puntosJugador1]}-All";
+            return puntosJugador1 >= 3 ? "Deuce" : $"{nombres[puntosJugador1]}-All";
         }
-
-
+        
         if (puntosJugador1 < 4 && puntosJugador2 < 4)
         {
             return $"{nombres[puntosJugador1]}-{nombres[puntosJugador2]}";
