@@ -4,19 +4,17 @@ namespace Tennis;
 
 public class Tennis
 {
-
     [Fact]
     public void Si_AmbosJugadoresTienenCeroPuntos_RegresaLove()
     {
-        var resultado = CalcularPuntajeTennis(0,0);
-        
-        resultado.Should().Be("Love");
+        var resultado = CalcularPuntajeTennis(0, 0);
 
-        
+        resultado.Should().Be("Love");
     }
 
-    private object CalcularPuntajeTennis(int player1, int player21)
+    private static string CalcularPuntajeTennis(int player1, int player2)
     {
-        throw new NotImplementedException();
+        if (player1 == 0 && player2 == 0)
+        return "Love";
     }
 }
