@@ -24,6 +24,10 @@ public class Tennis
     {
         if (puntosJugador1 == 0 && puntosJugador2 == 0)
             return "Love";
-        return "Fifteen";
+        
+        if (puntosJugador1 == 1 && puntosJugador2 == 0)
+            return "Fifteen";
+        
+        return string.Empty;
     }
 }
