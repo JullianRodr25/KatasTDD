@@ -25,6 +25,14 @@ public class Tennis
         resultado.Should().Be("Deuce");
     }
 
+    [Fact]
+    public void Si_AmbosJugadoresTienenAlMenosTresPuntosYUnoTieneUnoMas_DeberiaRetornarVentaja()
+    {
+        var resultado = CalcularPuntajeTennis(4,3);
+
+        resultado.Should().Be("advantage");
+    }
+    
     private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
     {
         string[] nombres = { "Love", "Fifteen", "Thirty", "Forty" };
