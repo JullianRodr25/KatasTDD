@@ -32,6 +32,14 @@ public class Tennis
 
         resultado.Should().Be("Advantage jugador 1");
     }
+    
+    [Fact]
+    public void Si_UnJugadorTieneAlMenosCuatroPuntosYDosMasQueElOtro_DeberiaRetornarGanaJugador()
+    {
+        var resultado = CalcularPuntajeTennis(4, 0);
+
+        resultado.Should().Be("Gana jugador 1");
+    }
 
     private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
     {
@@ -45,6 +53,7 @@ public class Tennis
             int diferencia = puntosJugador1 - puntosJugador2;
             if (Math.Abs(diferencia) == 1)
                 return diferencia > 0 ? "Advantage jugador 1" : "Advantage jugador 2";
+            
         }
         
         if (puntosJugador1 < 4 && puntosJugador2 < 4)
