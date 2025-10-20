@@ -16,7 +16,15 @@ public class Tennis
 
         resultado.Should().Be(resultadoEsperado);
     }
-    
+
+    [Fact]
+    public void Si_Jugador1TieneTresPuntosYJugador2Tres_Debe_RetornarDeuce()
+    {
+        var resultado = CalcularPuntajeTennis(3, 3);
+
+        resultado.Should().Be("Deuce");
+    }
+
     private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
     {
         string[] nombres = { "Love", "Fifteen", "Thirty", "Forty" };
@@ -24,6 +32,7 @@ public class Tennis
         {
             return $"{nombres[puntosJugador1]}-All";
         }
+
 
         if (puntosJugador1 < 4 && puntosJugador2 < 4)
         {
