@@ -7,7 +7,9 @@ public class Tennis
     [Theory]
     [InlineData(0, 0, "Love-All")]
     [InlineData(1, 1, "Fifteen-All")]
+    [InlineData(2, 1, "Thirty-Fifteen")]
     [InlineData(2, 2, "Thirty-All")]
+    [InlineData(3, 2, "Forty-Thirty")]
     public void
         Si_Jugador1YJugador2TieneLosMismosResultadosMenoresDe4DeberiaRetornarLoveAlloFifteenAlloThirtyAlloFortyAll(
             int puntosJugador1, int puntosJugador2, string resultadoEsperado)
@@ -17,54 +19,66 @@ public class Tennis
         resultado.Should().Be(resultadoEsperado);
     }
 
-    [Fact]
-    public void Si_Jugador1TieneTresPuntosYJugador2Tres_Debe_RetornarDeuce()
+    [Theory]
+    [InlineData(3, 3, "Deuce")]
+    [InlineData(4, 4, "Deuce")]
+    public void Si_Jugador1TieneTresPuntosYJugador2Tres_Debe_RetornarDeuce(int puntosJugador1, int puntosJugador2,
+        string resultadoEsperado)
     {
-        var resultado = CalcularPuntajeTennis(3, 3);
+        var resultado = CalcularPuntajeTennis(puntosJugador1, puntosJugador2);
 
-        resultado.Should().Be("Deuce");
+        resultado.Should().Be(resultadoEsperado);
     }
 
-    [Fact]
-    public void Si_AmbosJugadoresTienenAlMenosTresPuntosYUnoTieneUnoMas_DeberiaRetornarAdvantageJugador1oAdvantageJugador2()
+    [Theory]
+    [InlineData(4, 3, "Advantage jugador 1")]
+    [InlineData(3, 4, "Advantage jugador 2")]
+    public void
+        Si_AmbosJugadoresTienenAlMenosTresPuntosYUnoTieneUnoMas_DeberiaRetornarAdvantageJugador1oAdvantageJugador2(
+            int puntosJugador1, int puntosJugador2, string resultadoEsperado)
     {
-        var resultado = CalcularPuntajeTennis(4, 3);
+        var resultado = CalcularPuntajeTennis(puntosJugador1, puntosJugador2);
 
-        resultado.Should().Be("Advantage jugador 1");
+        resultado.Should().Be(resultadoEsperado);
+    }
+
+    [Theory]
+    [InlineData(4, 0, "Gana jugador 1")]
+    [InlineData(0, 4, "Gana jugador 2")]
+    [InlineData(2, 4, "Gana jugador 2")]
+    public void Si_UnJugadorTieneAlMenosCuatroPuntosYDosMasQueElOtro_DeberiaRetornarGanaJugador(int puntosJugador1,
+        int puntosJugador2, string resultadoEsperado)
+    {
+        var resultado = CalcularPuntajeTennis(puntosJugador1, puntosJugador2);
+
+        resultado.Should().Be(resultadoEsperado);
     }
     
-    [Fact]
-    public void Si_UnJugadorTieneAlMenosCuatroPuntosYDosMasQueElOtro_DeberiaRetornarGanaJugador()
-    {
-        var resultado = CalcularPuntajeTennis(4, 0);
-
-        resultado.Should().Be("Gana jugador 1");
-    }
-
     private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
     {
         string[] nombres = { "Love", "Fifteen", "Thirty", "Forty" };
-        
+
         if (puntosJugador1 == puntosJugador2)
-            return puntosJugador1 >= 3 ? "Deuce" : $"{nombres[puntosJugador1]}-All";
-        
-        if (puntosJugador1 >= 3 && puntosJugador2 >= 3)
-        {
-            int diferencia = puntosJugador1 - puntosJugador2;
-            if (Math.Abs(diferencia) == 1)
-                return diferencia > 0 ? "Advantage jugador 1" : "Advantage jugador 2";
-            if (Math.Abs(diferencia) >= 2)
-                return diferencia > 0 ? "Gana jugador 1" : "Gana jugador 2";
-        }
-        if (puntosJugador1 >= 4 && puntosJugador1 - puntosJugador2 >= 2)
-            return "Gana jugador 1";
+            return ObtenerMarcadorEmpate(puntosJugador1, nombres);
 
-        if (puntosJugador2 >= 4 && puntosJugador2 - puntosJugador1 >= 2)
-            return "Gana jugador 2";
-        
-        if (puntosJugador1 < 4 && puntosJugador2 < 4)
-            return $"{nombres[puntosJugador1]}-{nombres[puntosJugador2]}";
+        if (puntosJugador1 >= 4 || puntosJugador2 >= 4)
+            return ObtenerMarcadorFinal(puntosJugador1, puntosJugador2);
 
-        return string.Empty;
+        return $"{nombres[puntosJugador1]}-{nombres[puntosJugador2]}";
+    }
+
+    private static string ObtenerMarcadorEmpate(int puntos, string[] nombres)
+    {
+        return puntos >= 3 ? "Deuce" : $"{nombres[puntos]}-All";
+    }
+
+    private static string ObtenerMarcadorFinal(int puntosJugador1, int puntosJugador2)
+    {
+        int diferencia = puntosJugador1 - puntosJugador2;
+
+        if (Math.Abs(diferencia) >= 2)
+            return diferencia > 0 ? "Gana jugador 1" : "Gana jugador 2";
+
+        return diferencia > 0 ? "Advantage jugador 1" : "Advantage jugador 2";
     }
 }
