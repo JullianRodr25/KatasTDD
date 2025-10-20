@@ -22,6 +22,8 @@ public class Tennis
 
     private static string CalcularPuntajeTennis(int puntosJugador1, int puntosJugador2)
     {
-        return "Love";
+        if (puntosJugador1 == 0 && puntosJugador2 == 0)
+            return "Love";
+        return "Fifteen";
     }
 }
