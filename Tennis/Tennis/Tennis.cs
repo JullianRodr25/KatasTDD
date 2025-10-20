@@ -53,8 +53,14 @@ public class Tennis
             int diferencia = puntosJugador1 - puntosJugador2;
             if (Math.Abs(diferencia) == 1)
                 return diferencia > 0 ? "Advantage jugador 1" : "Advantage jugador 2";
-            
+            if (Math.Abs(diferencia) >= 2)
+                return diferencia > 0 ? "Gana jugador 1" : "Gana jugador 2";
         }
+        if (puntosJugador1 >= 4 && puntosJugador1 - puntosJugador2 >= 2)
+            return "Gana jugador 1";
+
+        if (puntosJugador2 >= 4 && puntosJugador2 - puntosJugador1 >= 2)
+            return "Gana jugador 2";
         
         if (puntosJugador1 < 4 && puntosJugador2 < 4)
             return $"{nombres[puntosJugador1]}-{nombres[puntosJugador2]}";
