@@ -45,6 +45,16 @@ public class RadarPalindromes2
         // Assert
         resultado.Should().BeTrue();
     }
+    
+    [Fact]
+    public void Si_EnvioAnnaConPuntuacion_DebeIgnorarLaPuntuacionyRetornarTrue()
+    {
+        // Arrage
+        // Act
+        var resultado = EsPalindromo("Anna.");
+        // Assert
+        resultado.Should().BeTrue();
+    }
 
     private bool EsPalindromo(string cadena)
     {
