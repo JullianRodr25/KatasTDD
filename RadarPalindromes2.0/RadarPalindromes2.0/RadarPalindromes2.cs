@@ -39,7 +39,10 @@ public class RadarPalindromes2
     [Fact]
     public void Si_EnvioAnnaDejandoEspacios_DebeIgnorarlosYRetornarTrue()
     {
+        // Arrage
+        // Act
         var resultado = EsPalindromo("A nna");
+        // Assert
         resultado.Should().BeTrue();
     }
 
@@ -47,8 +50,10 @@ public class RadarPalindromes2
     {
         if (string.IsNullOrEmpty(cadena))
             return false;
-
-        var cadenaMin = cadena.ToLower();
+        
+        var cadenaMin = cadena
+            .ToLower()
+            .Replace(" ", "");
 
         var inversa = new string(cadenaMin.Reverse().ToArray());
 
