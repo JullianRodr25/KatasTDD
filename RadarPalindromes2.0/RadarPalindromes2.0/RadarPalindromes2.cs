@@ -26,6 +26,13 @@ public class RadarPalindromes2
         resultado.Should().BeTrue();
     }
     
+    [Fact]
+    public void Si_EnvioAnNa_DebeIgnorarMayusculasYRetornarTrue()
+    {
+        var resultado = EsPalindromo("AnNa");
+        resultado.Should().BeTrue();
+    }
+    
     private bool EsPalindromo(string cadena)
     {
         if (string.IsNullOrEmpty(cadena))
