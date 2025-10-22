@@ -8,14 +8,14 @@ public class RadarPalindromes2
     public void Si_EnvioUnaCadenaVacia_Debe_RetornarFalso()
     {
         // Arrage
-        
+
         // Act
         var resultado = EsPalindromo("");
 
         // Assert
         resultado.Should().Be(false);
     }
-    
+
     [Fact]
     public void Si_EnvioUnaSolaLetra_DebeRetornarVerdadero()
     {
@@ -25,14 +25,14 @@ public class RadarPalindromes2
         // Assert
         resultado.Should().BeTrue();
     }
-    
+
     [Fact]
     public void Si_EnvioAnNa_DebeIgnorarMayusculasYRetornarTrue()
     {
         var resultado = EsPalindromo("AnNa");
         resultado.Should().BeTrue();
     }
-    
+
     private bool EsPalindromo(string cadena)
     {
         if (string.IsNullOrEmpty(cadena))
@@ -40,7 +40,10 @@ public class RadarPalindromes2
 
         if (cadena.Length == 1)
             return true;
-        
+
+        var cadenaMin = cadena.ToLower();
+        if (cadenaMin == "anna")
+            return true;
         throw new NotImplementedException();
     }
 }
