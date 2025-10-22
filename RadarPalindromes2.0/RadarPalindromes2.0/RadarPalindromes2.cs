@@ -80,6 +80,13 @@ public class RadarPalindromes2
         // Assert
         resultado.Should().Be(valorEsperado);
     }
+    
+    [Fact]
+    public void Si_EnvioUnaCadenaConNumerosDebeTratarlosComoTexto()
+    {
+        var resultado = EsPalindromo("12321");
+        resultado.Should().BeTrue();
+    }
 
     private bool EsPalindromo(string cadena)
     {
