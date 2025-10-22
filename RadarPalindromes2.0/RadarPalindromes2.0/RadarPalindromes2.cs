@@ -27,7 +27,7 @@ public class RadarPalindromes2
     }
 
     [Fact]
-    public void Si_EnvioAnNa_DebeIgnorarMayusculasYRetornarTrue()
+    public void Si_EnvioAnNa_DebeIgnorarMayusculasYRetornarVerdadero()
     {
         // Arrage
         // Act
@@ -37,7 +37,7 @@ public class RadarPalindromes2
     }
 
     [Fact]
-    public void Si_EnvioAnnaDejandoEspacios_DebeIgnorarlosYRetornarTrue()
+    public void Si_EnvioAnnaDejandoEspacios_DebeIgnorarlosYRetornarVerdadero()
     {
         // Arrage
         // Act
@@ -47,7 +47,7 @@ public class RadarPalindromes2
     }
 
     [Fact]
-    public void Si_EnvioAnnaConPuntuacion_DebeIgnorarLaPuntuacionyRetornarTrue()
+    public void Si_EnvioAnnaConPuntuacion_DebeIgnorarLaPuntuacionyRetornarVerdadero()
     {
         // Arrage
         // Act
@@ -55,7 +55,17 @@ public class RadarPalindromes2
         // Assert
         resultado.Should().BeTrue();
     }
-
+    
+    [Fact]
+    public void Si_EnvioUnaPalabraQueNoEsPalindromo_DebeRetornarFalso()
+    {
+        // Arrage
+        // Act
+        var resultado = EsPalindromo("hola");
+        // Assert
+        resultado.Should().BeFalse();
+    }
+    
     private bool EsPalindromo(string cadena)
     {
         if (string.IsNullOrEmpty(cadena))
