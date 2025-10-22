@@ -1,10 +1,25 @@
-﻿namespace RadarPalindromes2._0;
+﻿using FluentAssertions;
+
+namespace RadarPalindromes2._0;
 
 public class UnitTest1
 {
     [Fact]
-    public void Test1()
+    public void Si_EnvioUnaCadenaVacia_Debe_RetornarFalse()
     {
+        // Arrage
         
+        // Act
+        var resultado = EsPalindromo("");
+
+        // Assert
+        resultado.Should().Be(false);
+        
+
+    }
+
+    private object EsPalindromo(string empty)
+    {
+        throw new NotImplementedException();
     }
 }
