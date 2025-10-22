@@ -63,7 +63,7 @@ public class RadarPalindromes2
         
         var cadenaMin = cadena
             .ToLower()
-            .Replace(" ", "");
+            .Replace(" ", "").Replace(".", "");
 
         var inversa = new string(cadenaMin.Reverse().ToArray());
 
