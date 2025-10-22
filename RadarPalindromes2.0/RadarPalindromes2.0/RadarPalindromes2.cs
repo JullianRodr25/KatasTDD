@@ -2,7 +2,7 @@
 
 namespace RadarPalindromes2._0;
 
-public class UnitTest1
+public class RadarPalindromes2
 {
     [Fact]
     public void Si_EnvioUnaCadenaVacia_Debe_RetornarFalse()
@@ -14,11 +14,10 @@ public class UnitTest1
 
         // Assert
         resultado.Should().Be(false);
-        
     }
-
-    private object EsPalindromo(string cadena)
+    
+    private bool EsPalindromo(string cadena)
     {
-        return false;
+        return cadena == "" ? false : throw new NotImplementedException();
     }
 }
