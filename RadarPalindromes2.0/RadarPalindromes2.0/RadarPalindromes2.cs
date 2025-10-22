@@ -28,6 +28,13 @@ public class RadarPalindromes2
     
     private bool EsPalindromo(string cadena)
     {
-        return cadena == "" ? false : throw new NotImplementedException();
+        if (cadena == "")
+            return false;
+
+        if (cadena.Length == 1)
+            return true;
+        
+        throw new NotImplementedException();
+
     }
 }
