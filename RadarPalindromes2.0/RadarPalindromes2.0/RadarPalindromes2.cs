@@ -29,7 +29,10 @@ public class RadarPalindromes2
     [Fact]
     public void Si_EnvioAnNa_DebeIgnorarMayusculasYRetornarTrue()
     {
+        // Arrage
+        // Act
         var resultado = EsPalindromo("AnNa");
+        // Assert
         resultado.Should().BeTrue();
     }
 
@@ -38,12 +41,10 @@ public class RadarPalindromes2
         if (string.IsNullOrEmpty(cadena))
             return false;
 
-        if (cadena.Length == 1)
-            return true;
-
         var cadenaMin = cadena.ToLower();
-        if (cadenaMin == "anna")
-            return true;
-        throw new NotImplementedException();
+
+        var inversa = new string(cadenaMin.Reverse().ToArray());
+
+        return cadenaMin == inversa;
     }
 }
