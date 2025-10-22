@@ -16,61 +16,76 @@ public class RadarPalindromes2
         resultado.Should().Be(false);
     }
 
-    [Fact]
-    public void Si_EnvioUnaSolaLetra_DebeRetornarVerdadero()
+    [Theory]
+    [InlineData("a", true)]
+    [InlineData("d", true)]
+    [InlineData("j", true)]
+    public void Si_EnvioUnaSolaLetra_DebeRetornarVerdadero(string cadena, bool valorEsperado)
     {
         // Arrage
         // Act
-        var resultado = EsPalindromo("a");
+        var resultado = EsPalindromo(cadena);
         // Assert
-        resultado.Should().BeTrue();
+        resultado.Should().Be(valorEsperado);
     }
 
-    [Fact]
-    public void Si_EnvioAnNa_DebeIgnorarMayusculasYRetornarVerdadero()
+    [Theory]
+    [InlineData("AnNa.", true)]
+    [InlineData("ANNA", true)]
+    [InlineData("annA", true)]
+    public void Si_EnvioAnNa_DebeIgnorarMayusculasYRetornarVerdadero(string cadena, bool valorEsperado)
     {
         // Arrage
         // Act
-        var resultado = EsPalindromo("AnNa");
+        var resultado = EsPalindromo(cadena);
         // Assert
-        resultado.Should().BeTrue();
+        resultado.Should().Be(valorEsperado);
     }
 
-    [Fact]
-    public void Si_EnvioAnnaDejandoEspacios_DebeIgnorarlosYRetornarVerdadero()
+    [Theory]
+    [InlineData("A nna", true)]
+    [InlineData("   anna", true)]
+    [InlineData("anna   ", true)]
+    public void Si_EnvioAnnaDejandoEspacios_DebeIgnorarlosYRetornarVerdadero(string cadena, bool valorEsperado)
     {
         // Arrage
         // Act
-        var resultado = EsPalindromo("A nna");
+        var resultado = EsPalindromo(cadena);
         // Assert
-        resultado.Should().BeTrue();
+        resultado.Should().Be(valorEsperado);
     }
 
-    [Fact]
-    public void Si_EnvioAnnaConPuntuacion_DebeIgnorarLaPuntuacionyRetornarVerdadero()
+    [Theory]
+    [InlineData("Anna.", true)]
+    [InlineData("An.na", true)]
+    [InlineData(".A.nna.", true)]
+    public void Si_EnvioAnnaConPuntuacion_DebeIgnorarLaPuntuacionyRetornarVerdadero(string cadena, bool valorEsperado)
     {
         // Arrage
         // Act
-        var resultado = EsPalindromo("Anna.");
+        var resultado = EsPalindromo(cadena);
         // Assert
-        resultado.Should().BeTrue();
+        resultado.Should().Be(valorEsperado);
     }
-    
-    [Fact]
-    public void Si_EnvioUnaPalabraQueNoEsPalindromo_DebeRetornarFalso()
+
+    [Theory]
+    [InlineData("Prueba", false)]
+    [InlineData("Hola", false)]
+    [InlineData("123", false)]
+    public void Si_EnvioUnaPalabraQueNoEsPalindromo_DebeRetornarFalso(string cadena, bool valorEsperado)
     {
         // Arrage
         // Act
-        var resultado = EsPalindromo("hola");
+        var resultado = EsPalindromo(cadena);
         // Assert
-        resultado.Should().BeFalse();
+        resultado.Should().Be(valorEsperado);
     }
-    
+
     private bool EsPalindromo(string cadena)
     {
         if (string.IsNullOrEmpty(cadena))
             return false;
-        
+
         var cadenaMin = new string(cadena
             .ToLower()
             .Where(char.IsLetterOrDigit)
