@@ -23,6 +23,7 @@ public class RadarPalindromes2
     public void Si_EnvioUnaSolaLetra_DebeRetornarVerdadero(string cadena, bool valorEsperado)
     {
         // Arrage
+        
         // Act
         var resultado = EsPalindromo(cadena);
         // Assert
@@ -36,6 +37,7 @@ public class RadarPalindromes2
     public void Si_EnvioAnNa_DebeIgnorarMayusculasYRetornarVerdadero(string cadena, bool valorEsperado)
     {
         // Arrage
+        
         // Act
         var resultado = EsPalindromo(cadena);
         // Assert
@@ -49,6 +51,7 @@ public class RadarPalindromes2
     public void Si_EnvioAnnaDejandoEspacios_DebeIgnorarlosYRetornarVerdadero(string cadena, bool valorEsperado)
     {
         // Arrage
+        
         // Act
         var resultado = EsPalindromo(cadena);
         // Assert
@@ -62,6 +65,7 @@ public class RadarPalindromes2
     public void Si_EnvioAnnaConPuntuacion_DebeIgnorarLaPuntuacionyRetornarVerdadero(string cadena, bool valorEsperado)
     {
         // Arrage
+        
         // Act
         var resultado = EsPalindromo(cadena);
         // Assert
@@ -75,17 +79,25 @@ public class RadarPalindromes2
     public void Si_EnvioUnaPalabraQueNoEsPalindromo_DebeRetornarFalso(string cadena, bool valorEsperado)
     {
         // Arrage
+        
         // Act
         var resultado = EsPalindromo(cadena);
         // Assert
         resultado.Should().Be(valorEsperado);
     }
     
-    [Fact]
-    public void Si_EnvioUnaCadenaConNumerosDebeTratarlosComoTexto()
+    [Theory]
+    [InlineData("12321", true)]
+    [InlineData("33", true)]
+    [InlineData("11", true)]
+    public void Si_EnvioUnaCadenaConNumerosDebeTratarlosComoTexto(string cadena, bool valorEsperado)
     {
-        var resultado = EsPalindromo("12321");
-        resultado.Should().BeTrue();
+        // Arrage
+        
+        // Act
+        var resultado = EsPalindromo(cadena);
+        // Assert
+        resultado.Should().Be(valorEsperado);
     }
 
     private bool EsPalindromo(string cadena)
