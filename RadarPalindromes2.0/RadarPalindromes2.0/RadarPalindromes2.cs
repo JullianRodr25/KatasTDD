@@ -35,6 +35,13 @@ public class RadarPalindromes2
         // Assert
         resultado.Should().BeTrue();
     }
+    
+    [Fact]
+    public void Si_EnvioAnnaDejandoEspacios_DebeIgnorarlosYRetornarTrue()
+    {
+        var resultado = EsPalindromo("A nna");
+        resultado.Should().BeTrue();
+    }
 
     private bool EsPalindromo(string cadena)
     {
