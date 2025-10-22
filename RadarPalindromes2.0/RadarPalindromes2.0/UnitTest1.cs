@@ -15,11 +15,10 @@ public class UnitTest1
         // Assert
         resultado.Should().Be(false);
         
-
     }
 
-    private object EsPalindromo(string empty)
+    private object EsPalindromo(string cadena)
     {
-        throw new NotImplementedException();
+        return false;
     }
 }
