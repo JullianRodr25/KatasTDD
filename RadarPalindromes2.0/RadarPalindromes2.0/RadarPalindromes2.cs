@@ -5,7 +5,7 @@ namespace RadarPalindromes2._0;
 public class RadarPalindromes2
 {
     [Fact]
-    public void Si_EnvioUnaCadenaVacia_Debe_RetornarFalse()
+    public void Si_EnvioUnaCadenaVacia_Debe_RetornarFalso()
     {
         // Arrage
         
@@ -14,6 +14,16 @@ public class RadarPalindromes2
 
         // Assert
         resultado.Should().Be(false);
+    }
+    
+    [Fact]
+    public void Si_EnvioUnaSolaLetra_DebeRetornarVerdadero()
+    {
+        // Arrage
+        // Act
+        var resultado = EsPalindromo("a");
+        // Assert
+        resultado.Should().BeTrue();
     }
     
     private bool EsPalindromo(string cadena)
