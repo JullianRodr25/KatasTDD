@@ -35,7 +35,7 @@ public class RadarPalindromes2
         // Assert
         resultado.Should().BeTrue();
     }
-    
+
     [Fact]
     public void Si_EnvioAnnaDejandoEspacios_DebeIgnorarlosYRetornarTrue()
     {
@@ -45,7 +45,7 @@ public class RadarPalindromes2
         // Assert
         resultado.Should().BeTrue();
     }
-    
+
     [Fact]
     public void Si_EnvioAnnaConPuntuacion_DebeIgnorarLaPuntuacionyRetornarTrue()
     {
@@ -61,9 +61,10 @@ public class RadarPalindromes2
         if (string.IsNullOrEmpty(cadena))
             return false;
         
-        var cadenaMin = cadena
+        var cadenaMin = new string(cadena
             .ToLower()
-            .Replace(" ", "").Replace(".", "");
+            .Where(char.IsLetterOrDigit)
+            .ToArray());
 
         var inversa = new string(cadenaMin.Reverse().ToArray());
 
