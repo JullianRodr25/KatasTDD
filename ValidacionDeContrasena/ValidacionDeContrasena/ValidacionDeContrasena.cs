@@ -31,6 +31,8 @@ public class ValidacionDeContrasena
 
     private static object ValidaContrasena(string contrasena)
     {
+        if (contrasena.Length < 8)
+            return false;
         return true;
     }
 
