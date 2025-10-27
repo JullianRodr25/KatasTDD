@@ -10,7 +10,7 @@ public class ValidacionDeContrasena
         // Arrange
 
         // Act
-        var esValida = ValidaContrasena("Julia_n1234");
+        var esValida = ValidaContrasena("Julia_n1234", 1);
         // Assert
 
         esValida.Should().Be(true);
@@ -28,7 +28,7 @@ public class ValidacionDeContrasena
         // Arrange
 
         // Act
-        var esValida = ValidaContrasena(contrasena);
+        var esValida = ValidaContrasena(contrasena, 1);
 
         // Assert
         esValida.Should().Be(valorEsperado);
@@ -40,20 +40,30 @@ public class ValidacionDeContrasena
         // Arrange
 
         // Act
-        var esValida = ValidaContrasena("Prueb12");
-        
+        var esValida = ValidaContrasena("Prueb12", 2);
+
+
         // Assert
         esValida.Should().Be(true);
     }
 
-    
-    private static bool ValidaContrasena(string contrasena)
+    private static bool ValidaContrasena(string contrasena, int tipoValidacion)
     {
+        var cantidadCaracteres = tipoValidacion == 2 ? 6 : 8;
+
         var contieneMayuscula = contrasena.Any(char.IsUpper);
         var contieneMinuscula = contrasena.Any(char.IsLower);
         var contieneNumero = contrasena.Any(char.IsDigit);
         var contieneGuionBajo = contrasena.Contains('_');
 
-        return contrasena.Length >= 8 && contieneMayuscula && contieneMinuscula && contieneNumero && contieneGuionBajo;
+        var esValida = contrasena.Length >= cantidadCaracteres &&
+                       contieneMayuscula &&
+                       contieneMinuscula &&
+                       contieneNumero;
+        
+        if (tipoValidacion != 2)
+            esValida = esValida && contieneGuionBajo;
+
+        return esValida;
     }
 }
