@@ -5,7 +5,7 @@ namespace ValidacionDeContrasena;
 public class ValidacionDeContrasena
 {
     [Fact]
-    public void Si_EnvioCualquierContraseña_DebeRetornarVerdadero()
+    public void Si_EnvioCualquierContraseñaValida_DebeRetornarVerdadero()
     {
         // Arrange
 
