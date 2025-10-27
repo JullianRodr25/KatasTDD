@@ -52,6 +52,18 @@ public class ValidacionDeContrasena
         // Assert
         esValida.Should().Be(false);
     }
+    [Fact]
+    public void Si_EnvioUnaContraseñaSinNumero_Debe_RetornarFalso()
+    {
+        // Arrange
+
+        // Act
+        var esValida = ValidaContrasena("Password");
+
+        // Assert
+        esValida.Should().Be(false);
+    }
+    
 
     private static object ValidaContrasena(string contrasena)
     {
