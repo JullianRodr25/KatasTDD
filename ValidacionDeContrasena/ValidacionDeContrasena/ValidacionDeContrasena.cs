@@ -46,4 +46,16 @@ public class ValidacionDeContrasena
         // Assert
         esValida.Should().Be(true);
     }
+    
+    [Fact]
+    public void Si_EnvioUnaContraseñaConMasDeDieciseisCaracteresYTipoValidacion3Debe_RetornarVerdadero()
+    {
+        // Arrange
+
+        // Act
+        var esValida = Validador.ValidaContrasena("PruebaPrueba_1234", 3);
+
+        // Assert
+        esValida.Should().Be(true);
+    }
 }
