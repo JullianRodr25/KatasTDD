@@ -8,23 +8,22 @@ public class ValidacionDeContrasena
     public void Si_EnvioCualquierContraseña_DebeRetornarVerdadero()
     {
         // Arrange
-        
+
         // Act
         var esValida = ValidaContrasena("Julian1234");
         // Assert
 
         esValida.Should().Be(true);
-        
     }
-    
+
     [Fact]
     public void Si_EnvioUnaContraseñaConMenosDeOchoCaracteres_Debe_RetornarFalso()
     {
         // Arrange
-        
+
         // Act
         var esValida = ValidaContrasena("abc");
-        
+
         // Assert
         esValida.Should().Be(false);
     }
@@ -33,17 +32,20 @@ public class ValidacionDeContrasena
     public void Si_EnvioUnaContraseñaYNoContieneUnaLetraMayuscula_Debe_RetornarFalso()
     {
         // Arrange
-        
+
         // Act
         var esValida = ValidaContrasena("prueba1234");
-        
+
         // Assert
         esValida.Should().Be(false);
     }
 
     private static object ValidaContrasena(string contrasena)
     {
-        return contrasena.Length >= 8;
-    }
+        var contieneMayuscula = contrasena.Any(char.IsUpper);
 
+        if (contrasena.Length >= 8 && contieneMayuscula)
+            return true;
+        return false;
+    }
 }
