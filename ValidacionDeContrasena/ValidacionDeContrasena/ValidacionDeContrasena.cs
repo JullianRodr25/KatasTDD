@@ -76,8 +76,10 @@ public class ValidacionDeContrasena
         // Assert
         esValida.Should().Be(false);
     }
+    
+    
 
-    private static object ValidaContrasena(string contrasena)
+    private static bool ValidaContrasena(string contrasena)
     {
         var contieneMayuscula = contrasena.Any(char.IsUpper);
         var contieneMinuscula = contrasena.Any(char.IsLower);
