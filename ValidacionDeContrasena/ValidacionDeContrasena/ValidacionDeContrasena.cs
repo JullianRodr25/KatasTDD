@@ -2,7 +2,7 @@
 
 namespace ValidacionDeContrasena;
 
-public class UnitTest1
+public class ValidacionDeContrasena
 {
     [Fact]
     public void Si_EnvioCualquierContraseña_DebeRetornarVerdadero()
@@ -10,16 +10,14 @@ public class UnitTest1
         // Arrange
         
         // Act
-        var esValida = validaContrasena("Julian1234");
+        var esValida = ValidaContrasena("Julian1234");
         // Assert
 
         esValida.Should().Be(true);
-
-
-
+        
     }
 
-    private object validaContrasena(string julian1234)
+    private static object ValidaContrasena(string contrasena)
     {
         return true;
     }
