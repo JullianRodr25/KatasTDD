@@ -44,8 +44,6 @@ public class ValidacionDeContrasena
     {
         var contieneMayuscula = contrasena.Any(char.IsUpper);
 
-        if (contrasena.Length >= 8 && contieneMayuscula)
-            return true;
-        return false;
+        return contrasena.Length >= 8 && contieneMayuscula;
     }
 }
