@@ -56,7 +56,8 @@ public class ValidacionDeContrasena
     private static object ValidaContrasena(string contrasena)
     {
         var contieneMayuscula = contrasena.Any(char.IsUpper);
+        var contieneMinuscula = contrasena.Any(char.IsLower);
 
-        return contrasena.Length >= 8 && contieneMayuscula;
+        return contrasena.Length >= 8 && contieneMayuscula && contieneMinuscula;
     }
 }
