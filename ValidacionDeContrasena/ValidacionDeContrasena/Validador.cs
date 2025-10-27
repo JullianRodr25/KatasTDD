@@ -6,27 +6,27 @@ public class Validador
     {
         return tipoValidacion switch
         {
-            1 => validarTipo1(contrasena),
-            2 => validarTipo2(contrasena),
-            3 => validarTipo3(contrasena),
+            1 => ValidarTipo1(contrasena),
+            2 => ValidarTipo2(contrasena),
+            3 => ValidarTipo3(contrasena),
         };
     }
 
-    private static bool validarTipo3(string contrasena)
+    private static bool ValidarTipo3(string contrasena)
     {
         var regla = new ReglasContrasenaBuider(contrasena).ContieneMinimoCaracter(16).ContieneMayuscula()
             .ContieneMinuscula().ContieneGuionBajo().Build();
         return regla.esValida;
     }
 
-    private static bool validarTipo2(string contrasena)
+    private static bool ValidarTipo2(string contrasena)
     {
         var regla = new ReglasContrasenaBuider(contrasena).ContieneMinimoCaracter(6).ContieneMayuscula()
             .ContieneMinuscula().ContieneNumero().Build();
         return regla.esValida;
     }
 
-    private static bool validarTipo1(string contrasena)
+    private static bool ValidarTipo1(string contrasena)
     {
         var regla = new ReglasContrasenaBuider(contrasena).ContieneMinimoCaracter(8).ContieneMayuscula()
             .ContieneMinuscula()

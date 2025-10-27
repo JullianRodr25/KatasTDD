@@ -5,7 +5,7 @@ namespace ValidacionDeContrasena;
 public class ValidacionDeContrasena
 {
     [Fact]
-    public void Si_EnvioCualquierContraseñaValida_DebeRetornarVerdadero()
+    public void Si_EnvioCualquierContraseñaValidaYTipoValidacion1_DebeRetornarVerdadero()
     {
         // Arrange
 
@@ -23,7 +23,7 @@ public class ValidacionDeContrasena
     [InlineData("Password", false)]
     [InlineData("Prueba1234", false)]
     
-    public void Si_EnvioUnaContraseñaIncorrecta_Debe_RetornarFalso(string contrasena, bool valorEsperado)
+    public void Si_EnvioUnaContraseñaIncorrectaYTipoValidacion1_Debe_RetornarFalso(string contrasena, bool valorEsperado)
     {
         // Arrange
 
@@ -35,7 +35,7 @@ public class ValidacionDeContrasena
     }
 
     [Fact]
-    public void Si_EnvioUnaContraseñaConMasDeSeisCaracteresYSinguionBajo_Debe_RetornarVerdadero()
+    public void Si_EnvioUnaContraseñaConMasDeSeisCaracteresYSinguionBajoYTipoValidacion2_Debe_RetornarVerdadero()
     {
         // Arrange
 
