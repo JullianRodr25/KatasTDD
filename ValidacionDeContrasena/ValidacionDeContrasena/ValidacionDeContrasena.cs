@@ -39,8 +39,8 @@ public class ValidacionDeContrasena
         // Assert
         esValida.Should().Be(false);
     }
-    
-    
+
+
     [Fact]
     public void Si_EnvioUnaContraseñaYNoContieneUnaLetraMinuscula_Debe_RetornarFalso()
     {
@@ -52,6 +52,7 @@ public class ValidacionDeContrasena
         // Assert
         esValida.Should().Be(false);
     }
+
     [Fact]
     public void Si_EnvioUnaContraseñaSinNumero_Debe_RetornarFalso()
     {
@@ -63,13 +64,14 @@ public class ValidacionDeContrasena
         // Assert
         esValida.Should().Be(false);
     }
-    
+
 
     private static object ValidaContrasena(string contrasena)
     {
         var contieneMayuscula = contrasena.Any(char.IsUpper);
         var contieneMinuscula = contrasena.Any(char.IsLower);
+        var contieneNumero = contrasena.Any(char.IsDigit);
 
-        return contrasena.Length >= 8 && contieneMayuscula && contieneMinuscula;
+        return contrasena.Length >= 8 && contieneMayuscula && contieneMinuscula && contieneNumero;
     }
 }
