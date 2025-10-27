@@ -33,6 +33,19 @@ public class ValidacionDeContrasena
         // Assert
         esValida.Should().Be(valorEsperado);
     }
+
+    [Fact]
+    public void Si_EnvioUnaContraseñaConMasDeSeisCaracteresYSinguionBajo_Debe_RetornarVerdadero()
+    {
+        // Arrange
+
+        // Act
+        var esValida = ValidaContrasena("Prueb12");
+        
+        // Assert
+        esValida.Should().Be(true);
+    }
+
     
     private static bool ValidaContrasena(string contrasena)
     {
