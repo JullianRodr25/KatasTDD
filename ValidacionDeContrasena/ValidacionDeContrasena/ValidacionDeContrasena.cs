@@ -16,6 +16,18 @@ public class ValidacionDeContrasena
         esValida.Should().Be(true);
         
     }
+    
+    [Fact]
+    public void Si_EnvioUnaContraseñaConMenosDeOchoCaracteres_Debe_RetornarFalso()
+    {
+        // Arrange
+        
+        // Act
+        var esValida = ValidaContrasena("abc");
+        
+        // Assert
+        esValida.Should().Be(false);
+    }
 
     private static object ValidaContrasena(string contrasena)
     {
