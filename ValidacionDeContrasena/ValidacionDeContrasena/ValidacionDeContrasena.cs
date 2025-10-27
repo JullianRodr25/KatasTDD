@@ -15,70 +15,25 @@ public class ValidacionDeContrasena
 
         esValida.Should().Be(true);
     }
-
-    [Fact]
-    public void Si_EnvioUnaContraseñaConMenosDeOchoCaracteres_Debe_RetornarFalso()
+    
+    [Theory]
+    [InlineData("abc", false)]
+    [InlineData("prueba1234", false)]
+    [InlineData("PRUEBA1234", false)]
+    [InlineData("Password", false)]
+    [InlineData("Prueba1234", false)]
+    
+    public void Si_EnvioUnaContraseñaIncorrecta_Debe_RetornarFalso(string contrasena, bool valorEsperado)
     {
         // Arrange
 
         // Act
-        var esValida = ValidaContrasena("abc");
+        var esValida = ValidaContrasena(contrasena);
 
         // Assert
-        esValida.Should().Be(false);
-    }
-
-    [Fact]
-    public void Si_EnvioUnaContraseñaYNoContieneUnaLetraMayuscula_Debe_RetornarFalso()
-    {
-        // Arrange
-
-        // Act
-        var esValida = ValidaContrasena("prueba1234");
-
-        // Assert
-        esValida.Should().Be(false);
-    }
-
-
-    [Fact]
-    public void Si_EnvioUnaContraseñaYNoContieneUnaLetraMinuscula_Debe_RetornarFalso()
-    {
-        // Arrange
-
-        // Act
-        var esValida = ValidaContrasena("PRUEBA1234");
-
-        // Assert
-        esValida.Should().Be(false);
-    }
-
-    [Fact]
-    public void Si_EnvioUnaContraseñaSinNumero_Debe_RetornarFalso()
-    {
-        // Arrange
-
-        // Act
-        var esValida = ValidaContrasena("Password");
-
-        // Assert
-        esValida.Should().Be(false);
-    }
-
-    [Fact]
-    public void Si_EnvioUnaContraseñaSinGuionBajo_Debe_RetornarFalso()
-    {
-        // Arrange
-
-        // Act
-        var esValida = ValidaContrasena("Prueba1234");
-
-        // Assert
-        esValida.Should().Be(false);
+        esValida.Should().Be(valorEsperado);
     }
     
-    
-
     private static bool ValidaContrasena(string contrasena)
     {
         var contieneMayuscula = contrasena.Any(char.IsUpper);
