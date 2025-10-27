@@ -10,7 +10,7 @@ public class ValidacionDeContrasena
         // Arrange
 
         // Act
-        var esValida = ValidaContrasena("Julian1234");
+        var esValida = ValidaContrasena("Julia_n1234");
         // Assert
 
         esValida.Should().Be(true);
@@ -64,6 +64,7 @@ public class ValidacionDeContrasena
         // Assert
         esValida.Should().Be(false);
     }
+
     [Fact]
     public void Si_EnvioUnaContraseñaSinGuionBajo_Debe_RetornarFalso()
     {
@@ -81,7 +82,8 @@ public class ValidacionDeContrasena
         var contieneMayuscula = contrasena.Any(char.IsUpper);
         var contieneMinuscula = contrasena.Any(char.IsLower);
         var contieneNumero = contrasena.Any(char.IsDigit);
+        var contieneGuionBajo = contrasena.Contains('_');
 
-        return contrasena.Length >= 8 && contieneMayuscula && contieneMinuscula && contieneNumero;
+        return contrasena.Length >= 8 && contieneMayuscula && contieneMinuscula && contieneNumero && contieneGuionBajo;
     }
 }
