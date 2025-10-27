@@ -29,6 +29,18 @@ public class ValidacionDeContrasena
         esValida.Should().Be(false);
     }
 
+    [Fact]
+    public void Si_EnvioUnaContraseñaYNoContieneUnaLetraMayuscula_Debe_RetornarFalso()
+    {
+        // Arrange
+        
+        // Act
+        var esValida = ValidaContrasena("prueba1234");
+        
+        // Assert
+        esValida.Should().Be(false);
+    }
+
     private static object ValidaContrasena(string contrasena)
     {
         return contrasena.Length >= 8;
