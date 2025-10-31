@@ -14,6 +14,17 @@ public class NumerosRomanosTest
         noRomano.ConvertirANumeroRomano(1).Should().Be("I");
 
     }
+    
+    [Fact]
+    public void Si_EnvioElNumero2_DebeRetonarElEquivalenteARomanoII()
+    {
+    
+        // Act
+        var noRomano = new NumeroRomanos();
+        // Assert
+        noRomano.ConvertirANumeroRomano(2).Should().Be("II");
+
+    }
 }
  
 public class NumeroRomanos
