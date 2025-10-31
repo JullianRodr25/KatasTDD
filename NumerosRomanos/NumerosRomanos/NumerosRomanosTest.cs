@@ -58,6 +58,8 @@ public class NumeroRomanos
     {
         if (numeroArabigo == 4)
             return "IV";
+        if (numeroArabigo == 5)
+            return "V";
 
         return new string('I', numeroArabigo);
     }
