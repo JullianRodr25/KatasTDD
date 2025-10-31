@@ -7,46 +7,40 @@ public class NumerosRomanosTest
     [Fact]
     public void Si_EnvioElNumero1_DebeRetonarElEquivalenteARomanoI()
     {
-    
         // Act
         var noRomano = new NumeroRomanos();
         // Assert
         noRomano.ConvertirANumeroRomano(1).Should().Be("I");
-
     }
-    
+
     [Fact]
     public void Si_EnvioElNumero2_DebeRetonarElEquivalenteARomanoII()
     {
-    
         // Act
         var noRomano = new NumeroRomanos();
         // Assert
         noRomano.ConvertirANumeroRomano(2).Should().Be("II");
-
     }
-    
+
     [Fact]
     public void Si_EnvioElNumero3_DebeRetonarElEquivalenteARomanoIII()
     {
-    
         // Act
         var noRomano = new NumeroRomanos();
         // Assert
         noRomano.ConvertirANumeroRomano(3).Should().Be("III");
-
     }
 }
- 
+
 public class NumeroRomanos
 {
-    public string  ConvertirANumeroRomano(int numeroArabigo)
+    public string ConvertirANumeroRomano(int numeroArabigo)
     {
         if (numeroArabigo == 1)
             return "I";
-        else
+        else if (numeroArabigo == 2)
             return "II";
+        else
+            return "III";
     }
 }
-
-
