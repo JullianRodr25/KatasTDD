@@ -29,11 +29,11 @@ public class NumerosRomanosTest
  
 public class NumeroRomanos
 {
-    public string  ConvertirANumeroRomano(int i)
+    public string  ConvertirANumeroRomano(int numeroArabigo)
     {
-        if (i == 1)
+        if (numeroArabigo == 1)
             return "I";
-        else 
+        else
             return "II";
     }
 }
