@@ -4,63 +4,50 @@ namespace NumerosRomanos;
 
 public class NumerosRomanosTest
 {
-    [Fact]
-    public void Si_EnvioElNumero1_DebeRetonarElEquivalenteARomanoI()
+    [Theory]
+    [InlineData(1, "I")]
+    [InlineData(2, "II")]
+    [InlineData(3, "III")]
+    [InlineData(4, "IV")]
+    [InlineData(5, "V")]
+    [InlineData(6, "VI")]
+    [InlineData(7, "VII")]
+    [InlineData(8, "VIII")]
+    public void ConvertirANumeroRomano_DeberiaRetornarElEquivalenteCorrecto(int numeroArabigo, string esperado)
     {
-        // Act
+        // Arrange
         var noRomano = new NumeroRomanos();
-        // Assert
-        noRomano.ConvertirANumeroRomano(1).Should().Be("I");
-    }
 
-    [Fact]
-    public void Si_EnvioElNumero2_DebeRetonarElEquivalenteARomanoII()
-    {
         // Act
-        var noRomano = new NumeroRomanos();
-        // Assert
-        noRomano.ConvertirANumeroRomano(2).Should().Be("II");
-    }
+        var resultado = noRomano.ConvertirANumeroRomano(numeroArabigo);
 
-    [Fact]
-    public void Si_EnvioElNumero3_DebeRetonarElEquivalenteARomanoIII()
-    {
-        // Act
-        var noRomano = new NumeroRomanos();
         // Assert
-        noRomano.ConvertirANumeroRomano(3).Should().Be("III");
+        resultado.Should().Be(esperado);
     }
-    
-    [Fact]
-    public void Si_EnvioElNumero4_DebeRetonarElEquivalenteARomanoIV()
-    {
-        // Act
-        var noRomano = new NumeroRomanos();
-        // Assert
-        noRomano.ConvertirANumeroRomano(4).Should().Be("IV");
-    }
-    
-    [Fact]
-    public void Si_EnvioElNumero5_DebeRetonarElEquivalenteARomanoV()
-    {
-        // Act
-        var noRomano = new NumeroRomanos();
-        // Assert
-        noRomano.ConvertirANumeroRomano(5).Should().Be("V");
-    }
-    
-    
 }
 
 public class NumeroRomanos
 {
     public string ConvertirANumeroRomano(int numeroArabigo)
     {
-        if (numeroArabigo == 4)
-            return "IV";
-        if (numeroArabigo == 5)
-            return "V";
+        var mapa = new (int Valor, string Simbolo)[]
+        {
+            (5, "V"),
+            (4, "IV"),
+            (1, "I")
+        };
 
-        return new string('I', numeroArabigo);
+        var resultado = "";
+
+        foreach (var (valor, simbolo) in mapa)
+        {
+            while (numeroArabigo >= valor)
+            {
+                resultado += simbolo;
+                numeroArabigo -= valor;
+            }
+        }
+
+        return resultado;
     }
 }
