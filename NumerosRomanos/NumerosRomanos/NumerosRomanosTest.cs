@@ -30,6 +30,17 @@ public class NumerosRomanosTest
         // Assert
         noRomano.ConvertirANumeroRomano(3).Should().Be("III");
     }
+    
+    
+    [Fact]
+    public void Si_EnvioElNumero4_DebeRetonarElEquivalenteARomanoIV()
+    {
+        // Act
+        var noRomano = new NumeroRomanos();
+        // Assert
+        noRomano.ConvertirANumeroRomano(4).Should().Be("IV");
+    }
+    
 }
 
 public class NumeroRomanos
