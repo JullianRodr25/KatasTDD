@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NumerosRomanos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+407f7bb0b32e9041e1890fc5e750841131bcd229")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2fefd8aa544d0312cde8a89522333c879c1f37c")]
 [assembly: System.Reflection.AssemblyProductAttribute("NumerosRomanos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NumerosRomanos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

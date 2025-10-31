@@ -15,10 +15,10 @@ public class NumerosRomanosTest
 
     }
 }
-
+ 
 public class NumeroRomanos
 {
-    public object ConvertirANumeroRomano(int i)
+    public string  ConvertirANumeroRomano(int i)
     {
         return "I";
     }
