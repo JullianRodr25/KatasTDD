@@ -41,19 +41,16 @@ public class NumerosRomanosTest
         noRomano.ConvertirANumeroRomano(4).Should().Be("IV");
     }
     
+    
 }
 
 public class NumeroRomanos
 {
     public string ConvertirANumeroRomano(int numeroArabigo)
     {
-        return numeroArabigo switch
-        {
-            1 => "I",
-            2 => "II",
-            3 => "III",
-            _ => "IV"
-            
-        };
+        if (numeroArabigo == 4)
+            return "IV";
+
+        return new string('I', numeroArabigo);
     }
 }
