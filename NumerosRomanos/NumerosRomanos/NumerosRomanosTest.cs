@@ -31,7 +31,6 @@ public class NumerosRomanosTest
         noRomano.ConvertirANumeroRomano(3).Should().Be("III");
     }
     
-    
     [Fact]
     public void Si_EnvioElNumero4_DebeRetonarElEquivalenteARomanoIV()
     {
@@ -39,6 +38,15 @@ public class NumerosRomanosTest
         var noRomano = new NumeroRomanos();
         // Assert
         noRomano.ConvertirANumeroRomano(4).Should().Be("IV");
+    }
+    
+    [Fact]
+    public void Si_EnvioElNumero5_DebeRetonarElEquivalenteARomanoV()
+    {
+        // Act
+        var noRomano = new NumeroRomanos();
+        // Assert
+        noRomano.ConvertirANumeroRomano(5).Should().Be("V");
     }
     
     
