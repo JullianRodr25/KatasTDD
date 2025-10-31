@@ -36,11 +36,11 @@ public class NumeroRomanos
 {
     public string ConvertirANumeroRomano(int numeroArabigo)
     {
-        if (numeroArabigo == 1)
-            return "I";
-        else if (numeroArabigo == 2)
-            return "II";
-        else
-            return "III";
+        return numeroArabigo switch
+        {
+            1 => "I",
+            2 => "II",
+            _ => "III"
+        };
     }
 }
