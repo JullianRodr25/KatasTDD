@@ -27,17 +27,27 @@ public class NumerosRomanosTest
         resultado.Should().Be(esperado);
     }
 
-    [Fact]
-    public void Si_EnvioUnNumeroArabigoMultiploDe10_Debe_RetornarElEquivalenteCorrectoRomano()
+    [Theory]
+    [InlineData(10, "X")]
+    [InlineData(20, "XX")]
+    [InlineData(30, "XXX")]
+    [InlineData(40, "XL")]
+    [InlineData(50, "L")]
+    [InlineData(60, "LX")]
+    [InlineData(70, "LXX")]
+    [InlineData(80, "LXXX")]
+    [InlineData(90, "XC")]
+    [InlineData(100, "C")]
+    public void Si_EnvioUnNumeroArabigoMultiploDe10_Debe_RetornarElEquivalenteCorrectoRomano(int numeroArabigo, string esperado)
     {
         // Arrange
         var noRomano = new NumeroRomanos();
 
         // Act
-        var resultado = noRomano.ConvertirANumeroRomano(40);
+        var resultado = noRomano.ConvertirANumeroRomano(numeroArabigo);
 
         // Assert
-        resultado.Should().Be("XL");
+        resultado.Should().Be(resultado);
     }
     
 }
