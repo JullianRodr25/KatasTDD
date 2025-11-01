@@ -26,5 +26,18 @@ public class NumerosRomanosTest
         // Assert
         resultado.Should().Be(esperado);
     }
+
+    [Fact]
+    public void Si_EnvioUnNumeroArabigoMultiploDe10_Debe_RetornarElEquivalenteCorrectoRomano()
+    {
+        // Arrange
+        var noRomano = new NumeroRomanos();
+
+        // Act
+        var resultado = noRomano.ConvertirANumeroRomano(40);
+
+        // Assert
+        resultado.Should().Be("XL");
+    }
     
 }
