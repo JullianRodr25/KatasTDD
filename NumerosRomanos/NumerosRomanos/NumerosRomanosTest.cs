@@ -13,6 +13,7 @@ public class NumerosRomanosTest
     [InlineData(6, "VI")]
     [InlineData(7, "VII")]
     [InlineData(8, "VIII")]
+    
     public void ConvertirANumeroRomano_DeberiaRetornarElEquivalenteCorrecto(int numeroArabigo, string esperado)
     {
         // Arrange
@@ -24,6 +25,20 @@ public class NumerosRomanosTest
         // Assert
         resultado.Should().Be(esperado);
     }
+
+    [Fact]
+    public void Si_EnvioElNumero9_Debe_RetornarElEquivalenteNumeroRomanoIX()
+    {
+        // Arrange
+        var noRomano = new NumeroRomanos();
+
+        // Act
+        var resultado = noRomano.ConvertirANumeroRomano(9);
+
+        // Assert
+        resultado.Should().Be("IX");
+    }
+    
 }
 
 public class NumeroRomanos
