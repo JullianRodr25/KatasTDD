@@ -35,6 +35,10 @@ public class Rutina
 {
     public string QueHagoAhora(DateTime hora)
     {
-        return "Hacer ejercicio";
+        if (hora.Hour == 6 )
+            return "Hacer ejercicio";
+        if (hora.Hour == 7)
+            return "Leer y estudiar";
+        return "Sin actividad";
     }
 }
