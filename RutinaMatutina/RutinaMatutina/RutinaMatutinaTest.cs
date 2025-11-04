@@ -55,6 +55,8 @@ public class Rutina
             return "Hacer ejercicio";
         if (hora == 7)
             return "Leer y estudiar";
+        if (hora == 8)
+            return "Desayunar";
         return "Sin actividad";
     }
 }
