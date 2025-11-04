@@ -38,6 +38,13 @@ public class NumerosRomanosTest
     [InlineData(80, "LXXX")]
     [InlineData(90, "XC")]
     [InlineData(100, "C")]
+    
+    // EjemplosKata
+    
+    [InlineData(29, "XXIX")]
+    [InlineData(294, "CCXCIV")]
+    [InlineData(2019, "MMXIX")]
+    
     public void Si_EnvioUnNumeroArabigoMultiploDe10_Debe_RetornarElEquivalenteCorrectoRomano(int numeroArabigo, string esperado)
     {
         // Arrange
