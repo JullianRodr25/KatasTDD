@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RutinaMatutina")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09f159990dc4effc04dab3d1c09144046639a90c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aaaa2308da7501d6193e89c0afa55440cee743ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("RutinaMatutina")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RutinaMatutina")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
