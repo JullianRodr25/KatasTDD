@@ -29,6 +29,21 @@ public class RutinaMatutinaTest
         // Assert
         Assert.Equal("Leer y estudiar", resultado);
     }
+    
+        
+    [Fact]
+    public void Si_SonLas8DeLaMañana_Debe_RetornarDesayunar()
+    {
+        // Arrange
+        var rutina = new Rutina();
+        var hora = new DateTime(2025, 1, 1, 8, 00, 00);
+
+        // Act
+        var resultado = rutina.QueHagoAhora(hora);
+
+        // Assert
+        Assert.Equal("Desayunar", resultado);
+    }
 }
 
 public class Rutina
