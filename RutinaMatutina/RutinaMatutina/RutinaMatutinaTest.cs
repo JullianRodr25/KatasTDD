@@ -33,11 +33,12 @@ public class RutinaMatutinaTest
 
 public class Rutina
 {
-    public string QueHagoAhora(DateTime hora)
+    public string QueHagoAhora(DateTime horaActual)
     {
-        if (hora.Hour == 6 )
+        var hora = horaActual.Hour;
+        if (hora == 6 )
             return "Hacer ejercicio";
-        if (hora.Hour == 7)
+        if (hora == 7)
             return "Leer y estudiar";
         return "Sin actividad";
     }
