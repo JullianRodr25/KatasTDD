@@ -44,19 +44,19 @@ public class RutinaMatutinaTest
         // Assert
         Assert.Equal("Desayunar", resultado);
     }
-}
-
-public class Rutina
-{
-    public string QueHagoAhora(DateTime horaActual)
+    
+    [Fact]
+    public void Si_SonLas6Y50DeLaMañana_Debe_RetornarDucharse()
     {
-        var hora = horaActual.Hour;
-        if (hora == 6 )
-            return "Hacer ejercicio";
-        if (hora == 7)
-            return "Leer y estudiar";
-        if (hora == 8)
-            return "Desayunar";
-        return "Sin actividad";
+        // Arrange
+        var rutina = new Rutina();
+        var hora = new DateTime(2025, 1, 1, 6, 50, 00);
+
+        // Act
+        var resultado = rutina.QueHagoAhora(hora);
+
+        // Assert
+        Assert.Equal("Ducharse", resultado);
     }
+    
 }
