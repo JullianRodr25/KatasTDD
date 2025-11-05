@@ -15,7 +15,7 @@ public class RutinaMatutinaTest
         // Assert
         Assert.Equal("Hacer ejercicio", resultado);
     }
-    
+
     [Fact]
     public void Si_SonLas7DeLaMañana_Debe_RetornarLeerYEstudiar()
     {
@@ -29,8 +29,8 @@ public class RutinaMatutinaTest
         // Assert
         Assert.Equal("Leer y estudiar", resultado);
     }
-    
-        
+
+
     [Fact]
     public void Si_SonLas8DeLaMañana_Debe_RetornarDesayunar()
     {
@@ -44,7 +44,7 @@ public class RutinaMatutinaTest
         // Assert
         Assert.Equal("Desayunar", resultado);
     }
-    
+
     [Fact]
     public void Si_SonLas6Y50DeLaMañana_Debe_RetornarDucharse()
     {
