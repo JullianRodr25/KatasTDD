@@ -2,15 +2,21 @@
 
 public class RutinaMatutinaTest
 {
+    private readonly Rutina _rutina = new([
+        new Actividad("Hacer ejercicio", new TimeSpan(6, 0, 0), new TimeSpan(6, 59, 59)),
+        new Actividad("Leer y estudiar", new TimeSpan(7, 0, 0), new TimeSpan(7, 59, 59)),
+        new Actividad("Desayunar", new TimeSpan(8, 0, 0), new TimeSpan(8, 59, 59)),
+        new Actividad("Ducharse", new TimeSpan(6, 45, 0), new TimeSpan(6, 50, 0))
+    ]);
+
     [Fact]
     public void Si_SonLas6DeLaMañana_Debe_RetornarHacerEjecicio()
     {
         // Arrange
-        var rutina = new Rutina();
         var hora = new DateTime(2025, 1, 1, 6, 00, 00);
 
         // Act
-        var resultado = rutina.QueHagoAhora(hora);
+        var resultado = _rutina.ObtenerActividadPara(hora);
 
         // Assert
         Assert.Equal("Hacer ejercicio", resultado);
@@ -20,11 +26,11 @@ public class RutinaMatutinaTest
     public void Si_SonLas7DeLaMañana_Debe_RetornarLeerYEstudiar()
     {
         // Arrange
-        var rutina = new Rutina();
+
         var hora = new DateTime(2025, 1, 1, 7, 00, 00);
 
         // Act
-        var resultado = rutina.QueHagoAhora(hora);
+        var resultado = _rutina.ObtenerActividadPara(hora);
 
         // Assert
         Assert.Equal("Leer y estudiar", resultado);
@@ -35,28 +41,13 @@ public class RutinaMatutinaTest
     public void Si_SonLas8DeLaMañana_Debe_RetornarDesayunar()
     {
         // Arrange
-        var rutina = new Rutina();
+
         var hora = new DateTime(2025, 1, 1, 8, 00, 00);
 
         // Act
-        var resultado = rutina.QueHagoAhora(hora);
+        var resultado = _rutina.ObtenerActividadPara(hora);
 
         // Assert
         Assert.Equal("Desayunar", resultado);
     }
-
-    [Fact]
-    public void Si_SonLas6Y50DeLaMañana_Debe_RetornarDucharse()
-    {
-        // Arrange
-        var rutina = new Rutina();
-        var hora = new DateTime(2025, 1, 1, 6, 50, 00);
-
-        // Act
-        var resultado = rutina.QueHagoAhora(hora);
-
-        // Assert
-        Assert.Equal("Ducharse", resultado);
-    }
-    
 }

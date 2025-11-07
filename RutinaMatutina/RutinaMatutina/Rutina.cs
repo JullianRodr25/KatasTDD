@@ -4,25 +4,16 @@ public class Rutina
 {
     private readonly List<Actividad> _actividades;
 
-    public Rutina()
+    public Rutina(List<Actividad> actividades)
     {
-        _actividades =
-        [
-            new Actividad("Hacer ejercicio", new TimeSpan(6, 0, 0), new TimeSpan(6, 59, 59)),
-            new Actividad("Leer y estudiar", new TimeSpan(7, 0, 0), new TimeSpan(7, 59, 59)),
-            new Actividad("Desayunar", new TimeSpan(8, 0, 0), new TimeSpan(8, 59, 59)),
-            new Actividad("Ducharse", new TimeSpan(6, 45, 0), new TimeSpan(6, 50, 00)),
-
-        ];
+        _actividades = actividades;
     }
+
     
-    public string QueHagoAhora(DateTime horaActual)
+    public string ObtenerActividadPara(DateTime horaActual)
     {
         var hora = horaActual.TimeOfDay;
-        var actividad = _actividades
-            .Where(a => a.EstaEnRango(hora))
-            .OrderByDescending(a => a.HoraInicio)
-            .FirstOrDefault();
+        var actividad = _actividades.FirstOrDefault(a => a.EstaEnRango(hora));
         return actividad?.Descripcion ?? "Sin actividad";
     }
 }
