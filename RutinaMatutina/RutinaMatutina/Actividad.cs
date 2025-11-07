@@ -1,6 +1,6 @@
 namespace RutinaMatutina;
 
-internal class Actividad
+public class Actividad
 {
     public string Descripcion { get; }
     public TimeSpan HoraInicio { get; }
