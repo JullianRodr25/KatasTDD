@@ -8,6 +8,7 @@ public class Rutina
     {
         _actividades = actividades;
     }
+
     
     public string ObtenerActividadPara(DateTime horaActual)
     {
